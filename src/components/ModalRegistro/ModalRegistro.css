@@ -1,0 +1,148 @@
+.modalRegistro{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translate(-50%, -50%);
+  /* background-color: rgba(1, 80, 170, .15); */
+  background-color: rgba(0, 0, 0, .15);
+  backdrop-filter: blur(3px);
+  transition: 200ms ease;
+}
+.modalRegistro.activo{
+  visibility: visible;
+  opacity: 1;
+  z-index: 10;
+}
+.modalRegistro.inactivo{
+  visibility: hidden;
+  opacity: 0;
+  z-index: -1;
+}
+
+  .modalRegistro > article{
+    border-radius: 10px;
+    padding: 1rem;
+    background-color: #fff;
+  }
+
+    .modalRegistro > article > h3{
+      color: rgb(1, 80, 170);
+      text-transform: uppercase;
+      font-size: 22px;
+      padding-bottom: 1.5rem;
+    }
+
+    .modalRegistro .inputs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem 1rem;
+      padding-bottom: 1.5rem;
+    }
+      .modalRegistro .inputs input{
+        width: 20rem;
+        border: none;
+        outline: rgba(0, 0, 0, 0);
+        font-size: 15px;
+        text-transform: uppercase;
+        border-bottom: 1px solid rgb(1, 80, 170);
+      }
+      .modalRegistro .inputs input::placeholder{
+        color: rgba(1, 80, 170, .5);
+      }
+
+    .modalRegistro .fingerprints{
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+      .modalRegistro .fingerprints > div{
+        display: flex;
+        gap: .5rem;
+      }
+        .modalRegistro .fingerprints > div input{
+          width: 50%;
+          color: #fff;
+          border: none;
+          border-radius: 5px;
+          padding: .75rem 0;
+          text-transform: uppercase;
+          font-family: "Raleway-Regular";
+          font-weight: bold;
+          font-size: 14px;
+          background-color: rgb(1, 80, 170);
+          cursor: pointer;
+          transition: 150ms ease;
+        }
+        .modalRegistro .fingerprints > div input.terminar{
+          background-color: darkred;
+        }
+
+        .modalRegistro .fingerprints > input:hover{
+          background-color: rgba(1, 80, 170, .1);
+          color: rgb(1, 80, 170);
+        }
+        .modalRegistro .fingerprints > ul{
+          display: grid;
+          grid-template-columns: 1fr 1fr 1fr 1fr;
+          gap: 1.25rem;
+        }
+          .modalRegistro .fingerprints li{
+            height: 5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            /* box-shadow: 0 0 2px #000; */
+          }
+            .modalRegistro .fingerprints li svg{
+              width: 90%;
+              height: 75%;
+              color: rgb(1, 80, 170);
+            }
+            .modalRegistro .fingerprints li svg.activo{
+              color: green;
+            }
+            .modalRegistro .fingerprints li img{
+              width: 90%;
+              height: 75%;
+              object-fit: contain;
+            }
+            .modalRegistro .fingerprints li p{
+              /* box-shadow: 0 0 2.5px #000; */
+              font-weight: bold;
+            }
+
+    .modalRegistro .buttons{
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 1rem;
+      padding-top: 1.5rem;
+    }
+      .modalRegistro .buttons > input{
+        width: 10rem;
+        height: 2rem;
+        border: none;
+        border-radius: 5px;
+        color: #fff;
+        font-family: "Raleway-Regular";
+        font-weight: bold;
+        text-transform: uppercase;
+        background-color: rgb(1, 80, 170);
+        transition: 100ms ease;
+        cursor: pointer;
+      }
+      .modalRegistro .buttons > input.cancelar{
+        background-color: rgba(139, 0, 0, 0.85);
+      }
+      .modalRegistro .buttons > input.reiniciar{
+        background-color: rgb(193, 129, 0);
+      }
+      .modalRegistro .buttons > input:hover{
+        opacity: .5;
+      }

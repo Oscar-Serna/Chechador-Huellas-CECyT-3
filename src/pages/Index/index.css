@@ -1,0 +1,9 @@
+.indexPage{
+  height: calc(100vh - 8rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: calc(100vw / 8);
+  padding: 2rem 1rem;
+  box-shadow: 0 0 2.5px #000;
+}

@@ -1,0 +1,55 @@
+@font-face {
+  font-family: "Roboto";
+  src: url(../../fonts/Roboto-Regular.ttf);
+}
+
+.seccionReloj{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+  .seccionReloj .reloj{
+    position: relative;
+  }
+  .seccionReloj .reloj h2{
+    font-size: 8.5rem;
+    color: rgba(0, 0, 0, .75);
+    font-family: "Roboto";
+    /* box-shadow: 0 0 2.5px #000; */
+  }
+  .seccionReloj .reloj span{
+    position: absolute;
+    right: 0;
+    bottom: 1.5rem;
+    margin-right: -5.25rem;
+    font-size: 2.5rem;
+  }
+
+  .seccionReloj .horary h4{
+    font-size: 2.75rem;
+    color: rgba(0, 0, 0, .25);
+    text-transform: uppercase;
+    padding-bottom: 4rem;
+  }
+  /* .seccionReloj .horary p{ */
+    
+  /* } */
+
+  .seccionReloj .buttons input{
+    width: 20rem;
+    height: 3rem;
+    border: none;
+    border-radius: 5px;
+    background-color: rgb(1, 81, 170);
+    color: #fff;
+    font-weight: bolder;
+    text-transform: uppercase;
+    font-size: 18px;
+    font-family: "Raleway-Regular";
+    cursor: pointer;
+    transition: 250ms ease;
+  }
+  .seccionReloj .buttons input:hover{
+    transform: scale(1.025);
+    box-shadow: 7px 7px 2.5px rgba(1, 80, 170, .25);
+  }

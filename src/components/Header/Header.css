@@ -1,0 +1,48 @@
+@font-face {
+  font-family: "Raleway-Regular";
+  src: url(../../fonts/Raleway-Regular.ttf);
+}
+
+body{
+  margin: 0;
+  font-family: "Raleway-Regular";
+  user-select: none;
+}
+header{
+  height: 4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem;
+  background-color: rgb(1, 81, 170);
+  color: #fff;
+}
+
+  header .sectionLogo{
+    display: inherit;
+    align-items: inherit;
+    gap: .75rem;
+  }
+    header img{
+      width: 2.5rem;
+      height: 2.5rem;
+    }
+    header h1{
+      /* fon */
+    }
+
+  header .sectionReloj{
+
+  }
+    header p{
+      font-size: 21px;
+    }
+
+
+h1,h2,h3,h4,h5,h6,p,a,ul,li,nav,span,p{
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  color: unset;
+  list-style: none;
+}

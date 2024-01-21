@@ -1,0 +1,40 @@
+.opcionesRegistro{
+  
+}
+  .opcionesRegistro .options{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background-color: rgba(1, 80, 170, 0.1);
+    padding: .8rem  2rem;
+  }
+
+    .opcionesRegistro .options > div{
+      position: relative;
+      display: flex;
+      align-items: center;
+      transition: 150ms ease;
+      cursor: pointer;
+    }
+      .opcionesRegistro .options svg{
+        position: absolute;
+        left: .65rem;
+        width: 1.2rem;
+        height: 1.2rem;
+        color: #fff;
+      }
+      .opcionesRegistro .options input{
+        padding: .6rem 1rem .6rem 2.35rem;
+        border: none;
+        border-radius: 5px;
+        background-color: rgb(1, 80, 170);
+        color: #fff;
+        font-size: 14px;
+        font-weight: bold;
+        text-transform: uppercase;
+        font-family: "Raleway-Regular";
+        cursor: pointer;
+      }
+      .opcionesRegistro .options > div:hover{
+        opacity: .75;
+      }
