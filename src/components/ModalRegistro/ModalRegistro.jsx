@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 
 import { IoMdFingerPrint } from "react-icons/io";
 
@@ -7,6 +7,8 @@ import { FingerprintReader, SampleFormat } from "@digitalpersona/devices";
 import "../../modules/WebSDK";
 
 import "./ModalRegistro.css";
+
+import { UsersContext } from "../../context/users.context";
 
 export const ModalRegistro = ({ modalState, animationRegistro }) => {
   const numeroHuellas = 12;
@@ -24,6 +26,9 @@ export const ModalRegistro = ({ modalState, animationRegistro }) => {
   );
   const [deviceUID, setDeviceUID] = useState(null);
   let [scanCounter, setScanCounter] = useState(0);
+
+  // CONTEXTO
+  const { GetUsers, CreateUser } = useContext(UsersContext);
 
   // INICIALIZAMOS "reader" PARA DEFINIR EL OBJETO "FingerprintReader"
   useEffect(() => {
@@ -189,10 +194,46 @@ export const ModalRegistro = ({ modalState, animationRegistro }) => {
     deleteLocalStorage();
   }
 
+  function handleCreateUser() {
+    const inputsModal = document.querySelectorAll(".inputs > input");
+
+    const valueInputs = new Array(5).fill(null);
+
+    inputsModal.forEach((input, index) => {
+      if (input.value.trim() === "")
+        return alert(
+          `Debes llenar el campo:\n${input.placeholder.toUpperCase()}`
+        );
+
+      valueInputs[index] = (input.value);
+
+      if (valueInputs[index] === null) return alert(`Ocurrio un error el input No. ${index + 1} es null`);
+    });
+
+    const huellasLS = JSON.parse(localStorage.getItem("huellas"));
+
+    if(huellasLS === null) return alert("No hay huellas registradas");
+
+    huellas.forEach((huella, index) => {
+      if(huella === false) return alert(`La huella número ${index + 1} del personal no se registro correctamente`);
+    })
+
+    console.log(huellasLS);
+
+    CreateUser(
+      valueInputs[0],
+      valueInputs[1].trim(),
+      valueInputs[2].trim(),
+      valueInputs[3],
+      valueInputs[4],
+      huellasLS
+    );
+  }
+
   return (
     <section
       className={`modalRegistro ${modalState}`}
-      onClick={e => {
+      onClick={(e) => {
         if (e.target.classList.contains("modalRegistro")) {
           animationRegistro();
           stopCaptura();
@@ -262,7 +303,13 @@ export const ModalRegistro = ({ modalState, animationRegistro }) => {
               stopCaptura();
             }}
           />
-          <input type="button" value="Terminar" />
+          <input
+            type="button"
+            value="Terminar"
+            onClick={() => {
+              handleCreateUser();
+            }}
+          />
         </div>
       </article>
     </section>

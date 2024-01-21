@@ -1,7 +1,7 @@
 import axios from "axios";
 import { baseURL } from "./baseURL";
 
-export const GetAllUsers = async () => {
+export const Services_GetAllUsers = async () => {
   try {
     const result = await axios.get(`${baseURL}/api/users/?all=true&rfc='null'`);
 
@@ -12,9 +12,9 @@ export const GetAllUsers = async () => {
   }
 }
 
-export const GetUser = async (RFC) => {
+export const Services_GetUser = async (rfc) => {
   try {
-    const result = await axios.get(`${baseURL}/api/users/?all=false&rfc='${RFC}'`);
+    const result = await axios.get(`${baseURL}/api/users/?all=false&rfc='${rfc}'`);
 
     return result;
   } catch (error) {
@@ -23,7 +23,7 @@ export const GetUser = async (RFC) => {
   }
 }
 
-export const CreateUser = async (userData) => {
+export const Services_CreateUser = async (userData) => {
   try {
     const result = await axios.post(`${baseURL}/api/users/`, userData);
 
