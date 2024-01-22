@@ -1,15 +1,18 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { CardPersonalRegistrado } from "../CardPersonalRegistrado/CardPersonalRegistrado";
 
 import { IoIosSearch } from "react-icons/io";
 
 import "./PersonalRegistrado.css";
 
+import { UsersContext } from "../../context/users.context";
+
 export const PersonalRegistrado = () => {
-  const [personal, setPersonal] = useState([]);
+
+  const { allUsers } = useContext(UsersContext);
 
   function renderPersonal() {
-    if (personal.length === 0)
+    if (allUsers.length === 0)
       return (
         <p>
           <b>No existe personal registrado...</b>
@@ -17,12 +20,14 @@ export const PersonalRegistrado = () => {
           <span>Empiece a registrar personal en <b>"Agregar Personal"</b></span>
         </p>
       );
-    personal.map((persona, index) => (
+    return allUsers.map((persona, index) => (
       <CardPersonalRegistrado
         key={index}
         id={index}
         nombre={persona.nombre}
-        numEmpleado={persona.numEmpleado}
+        cedula={persona.cedula}
+        rfc={persona.rfc}
+        num_huellas={persona.num_huellas}
       />
     ));
   }

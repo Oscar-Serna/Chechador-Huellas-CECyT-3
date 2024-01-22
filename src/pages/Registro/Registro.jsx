@@ -17,8 +17,8 @@ export const Registro = () => {
   return (
     <>
       <OpcionesRegistro animationRegistro={AnimationModalRegistro} />
-      <PersonalRegistrado />
       <UsersContextProvider>
+        <PersonalRegistrado />
         <ModalRegistro modalState={modalRegistroState} animationRegistro={AnimationModalRegistro} />
       </UsersContextProvider>
     </>

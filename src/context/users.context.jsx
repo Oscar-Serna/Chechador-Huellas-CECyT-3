@@ -1,72 +1,86 @@
-import React, { createContext } from "react";
+import React, { createContext, useEffect, useState } from "react";
 
-import { Services_CreateUser, Services_GetAllUsers, Services_GetUser } from "../services/users.services";
+import {
+  Services_CreateUser,
+  Services_GetAllUsers,
+  Services_GetUser,
+} from "../services/users.services";
 
 export const UsersContext = createContext();
 
 export const UsersContextProvider = ({ children }) => {
 
-  function GetUsers (isAll, rfc) {
+  const [ allUsers, setAllUsers ] = useState([]);
 
-    if(isAll === true) {
+  useEffect(() => {
+    GetUsers(true);
+  }, []);
 
+  function GetUsers(isAll, rfc) {
+    if (isAll === true) {
       const fetchGetUsers = async () => {
-
         const result = await Services_GetAllUsers();
 
-        console.log(result);
+        setAllUsers(result);
+
+        console.log("AllUsers", result)
 
         return result;
-
-      }
+      };
 
       fetchGetUsers();
-
     }
 
-    if(rfc != null) {
-
-      if(rfc.trim() === '') throw new Error("Debes de ingresar un RFC");
+    if (rfc != null) {
+      if (rfc.trim() === "") throw new Error("Debes de ingresar un RFC");
 
       const fetchGetUsers = async () => {
-
         const result = await Services_GetUser(rfc);
 
         console.log(result);
 
         return result;
-
-      }
+      };
 
       fetchGetUsers();
-
     }
-
-
-
   }
 
-  function CreateUser (nombre, cedula, rfc, t_personal, turno, huellas) {
-
+  function CreateUser(nombre, cedula, rfc, t_personal, turno, huellas) {
     const fetchCreateUser = async () => {
+      const data = await Services_CreateUser({
+        nombre,
+        cedula,
+        rfc,
+        t_personal,
+        turno,
+        huellas,
+      });
 
-      const result = await Services_CreateUser({ nombre, cedula, rfc, t_personal, turno, huellas });
+      if (data.saveServer === "Exitoso")
+        alert("El miembro fue registrado con éxito");
+      if (data.saveServer === "Error")
+        alert("Hubo un error al agregar el miembro");
+      if (data.saveServer === "Existe") alert("Este usuario ya existe");
 
-      console.log(result);
+      window.location.reload();
 
-      return result;
-    }
+      return data;
+    };
 
     fetchCreateUser();
-
   }
 
-  return(
-    <UsersContext.Provider value={{
-      GetUsers,
-      CreateUser
-    }}>
-      { children }
+  return (
+    <UsersContext.Provider
+      value={{
+        allUsers,
+
+        GetUsers,
+        CreateUser,
+      }}
+    >
+      {children}
     </UsersContext.Provider>
-  )
-}
+  );
+};

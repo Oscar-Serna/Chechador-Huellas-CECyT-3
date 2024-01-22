@@ -34,9 +34,9 @@ export const ModalRegistro = ({ modalState, animationRegistro }) => {
   useEffect(() => {
     setReader(new FingerprintReader());
 
-    window.addEventListener("load", hasFingerprintsSaved);
+    window.addEventListener("load", deleteLocalStorage);
 
-    window.removeEventListener("DOMContentLoaded", hasFingerprintsSaved);
+    window.removeEventListener("DOMContentLoaded", deleteLocalStorage);
   }, []);
 
   // INICIALIZAMOS LA ESCUCHA DE EVENTOS DEL LECTOR Y OBTENEMOS SU "UID" (CUANDO SE MODIFIQUE EL "reader")
@@ -61,24 +61,6 @@ export const ModalRegistro = ({ modalState, animationRegistro }) => {
 
   function onDeviceDisconnected() {
     setReaderStatus(false);
-  }
-
-  // PREGUNTAR SI YA EXISTEN HUELLAS REGISTRADAS
-  function hasFingerprintsSaved() {
-    const huellasLS = JSON.parse(localStorage.getItem("huellas"));
-
-    if (huellasLS === null) return console.log("No existen huellas");
-
-    setHuellas(() => {
-      const newHuellas = new Array(numeroHuellas).fill(false);
-
-      for (let i = 0; i < newHuellas.length; i++) {
-        if (huellasLS[i] != undefined) newHuellas[i] = true;
-        else newHuellas[i] = false;
-      }
-
-      return newHuellas;
-    });
   }
 
   // INICIO DE ADQUISICIÓN DE IMAGENES
@@ -172,6 +154,8 @@ export const ModalRegistro = ({ modalState, animationRegistro }) => {
 
   // ELIMINAR LOCALSTORAGE
   function deleteLocalStorage() {
+    if (localStorage.getItem("huellas") === null) return;
+
     localStorage.removeItem("huellas");
     window.location.reload();
   }
@@ -205,18 +189,24 @@ export const ModalRegistro = ({ modalState, animationRegistro }) => {
           `Debes llenar el campo:\n${input.placeholder.toUpperCase()}`
         );
 
-      valueInputs[index] = (input.value);
+      valueInputs[index] = input.value;
 
-      if (valueInputs[index] === null) return alert(`Ocurrio un error el input No. ${index + 1} es null`);
+      if (valueInputs[index] === null)
+        return alert(`Ocurrio un error el input No. ${index + 1} es null`);
     });
 
     const huellasLS = JSON.parse(localStorage.getItem("huellas"));
 
-    if(huellasLS === null) return alert("No hay huellas registradas");
+    if (huellasLS === null) return alert("No hay huellas registradas");
 
     huellas.forEach((huella, index) => {
-      if(huella === false) return alert(`La huella número ${index + 1} del personal no se registro correctamente`);
-    })
+      if (huella === false)
+        return alert(
+          `La huella número ${
+            index + 1
+          } del personal no se registro correctamente`
+        );
+    });
 
     console.log(huellasLS);
 
