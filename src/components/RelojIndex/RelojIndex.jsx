@@ -22,7 +22,9 @@ export const RelojIndex = () => {
   function getReloj() {
     const date = new Date();
     let hora =
-      date.getHours() > 12 ? `0${date.getHours() - 12}` : date.getHours();
+      date.getHours() > 12
+        ? `0${date.getHours() - 12}`
+        : date.getHours();
     const minutos =
       date.getMinutes() < 10 ? `0${date.getMinutes()}` : date.getMinutes();
     const segundos =

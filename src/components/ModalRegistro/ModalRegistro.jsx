@@ -34,9 +34,9 @@ export const ModalRegistro = ({ modalState, animationRegistro }) => {
   useEffect(() => {
     setReader(new FingerprintReader());
 
-    window.addEventListener("load", deleteLocalStorage);
+    // window.addEventListener("load", deleteLocalStorage);
 
-    window.removeEventListener("DOMContentLoaded", deleteLocalStorage);
+    // window.removeEventListener("DOMContentLoaded", deleteLocalStorage);
   }, []);
 
   // INICIALIZAMOS LA ESCUCHA DE EVENTOS DEL LECTOR Y OBTENEMOS SU "UID" (CUANDO SE MODIFIQUE EL "reader")
@@ -154,8 +154,6 @@ export const ModalRegistro = ({ modalState, animationRegistro }) => {
 
   // ELIMINAR LOCALSTORAGE
   function deleteLocalStorage() {
-    if (localStorage.getItem("huellas") === null) return;
-
     localStorage.removeItem("huellas");
     window.location.reload();
   }
@@ -170,14 +168,6 @@ export const ModalRegistro = ({ modalState, animationRegistro }) => {
     return formatImage;
   }
 
-  // SE LIMPIAN LOS VALORES DEL AGREGADO DE PERSONAL
-  function limpiarValoresRegistro() {
-    const inputs = document.querySelectorAll(".inputs > input");
-
-    inputs.forEach((input) => (input.value = ""));
-    deleteLocalStorage();
-  }
-
   function handleCreateUser() {
     const inputsModal = document.querySelectorAll(".inputs > input");
 
@@ -189,7 +179,7 @@ export const ModalRegistro = ({ modalState, animationRegistro }) => {
           `Debes llenar el campo:\n${input.placeholder.toUpperCase()}`
         );
 
-      valueInputs[index] = input.value;
+      valueInputs[index] = input.value.toUpperCase();
 
       if (valueInputs[index] === null)
         return alert(`Ocurrio un error el input No. ${index + 1} es null`);
@@ -208,16 +198,16 @@ export const ModalRegistro = ({ modalState, animationRegistro }) => {
         );
     });
 
-    console.log(huellasLS);
-
     CreateUser(
       valueInputs[0],
       valueInputs[1].trim(),
       valueInputs[2].trim(),
       valueInputs[3],
       valueInputs[4],
-      huellasLS
+      huellasLS,
+      deleteLocalStorage
     );
+
   }
 
   return (
@@ -278,10 +268,10 @@ export const ModalRegistro = ({ modalState, animationRegistro }) => {
         <div className="buttons">
           <input
             type="button"
-            value="Limpiar valores"
+            value="Quitar huellas"
             className="reiniciar"
             onClick={() => {
-              limpiarValoresRegistro();
+              deleteLocalStorage();
             }}
           />
           <input

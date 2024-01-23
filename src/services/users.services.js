@@ -33,3 +33,14 @@ export const Services_CreateUser = async (userData) => {
     console.info(error);
   }
 }
+
+export const Services_DeleteUser = async (cedula) => {
+  try {
+    const result = await axios.delete(`${baseURL}/api/users/?cedula=${cedula}`);
+
+    return result;
+  } catch (error) {
+    console.error("Error en user.services.js - DeleteUser");
+    console.info(error);
+  }
+}

@@ -1,10 +1,33 @@
-import React from "react";
+import React, { useContext } from "react";
 
-export const CardPersonalRegistrado = ({ id, cedula, nombre, rfc, num_huellas}) => {
+import "./CardPersonalRegistrado.css";
+
+import { UsersContext } from "../../context/users.context";
+
+export const CardPersonalRegistrado = ({
+  id,
+  cedula,
+  nombre,
+  t_personal,
+  num_huellas,
+}) => {
+
+  const { DeleteUser } = useContext(UsersContext);
 
   return (
-    <li>
-      <p>{nombre} Cedula: {cedula} Num huellas: {num_huellas} RFC: {rfc}</p>
+    <li className="cardPersonal">
+      <div className="información">
+        <h3>{id + 1}.-</h3>
+        <p>
+          <b>{cedula}</b>:&nbsp; {nombre} &nbsp; | &nbsp; {t_personal} &nbsp; |
+          &nbsp; Huellas: <b>{num_huellas}</b>
+        </p>
+      </div>
+      <ul className="opciones">
+        <li onClick={() => {
+          DeleteUser(cedula, nombre);
+        }}>Eliminar personal</li>
+      </ul>
     </li>
-  )
-}
+  );
+};

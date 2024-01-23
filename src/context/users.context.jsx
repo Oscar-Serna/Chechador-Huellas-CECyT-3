@@ -2,6 +2,7 @@ import React, { createContext, useEffect, useState } from "react";
 
 import {
   Services_CreateUser,
+  Services_DeleteUser,
   Services_GetAllUsers,
   Services_GetUser,
 } from "../services/users.services";
@@ -46,7 +47,7 @@ export const UsersContextProvider = ({ children }) => {
     }
   }
 
-  function CreateUser(nombre, cedula, rfc, t_personal, turno, huellas) {
+  function CreateUser(nombre, cedula, rfc, t_personal, turno, huellas, deleteLocalStorage) {
     const fetchCreateUser = async () => {
       const data = await Services_CreateUser({
         nombre,
@@ -55,20 +56,37 @@ export const UsersContextProvider = ({ children }) => {
         t_personal,
         turno,
         huellas,
+      }).then(_ => {
+        deleteLocalStorage();
       });
 
-      if (data.saveServer === "Exitoso")
+      if (data.saveInServer === "Exitoso")
         alert("El miembro fue registrado con éxito");
-      if (data.saveServer === "Error")
+      if (data.saveInServer === "Error")
         alert("Hubo un error al agregar el miembro");
-      if (data.saveServer === "Existe") alert("Este usuario ya existe");
+      if (data.saveInServer === "Existe") alert("Este usuario ya existe");
 
-      window.location.reload();
+      // window.location.reload();s
 
       return data;
     };
 
     fetchCreateUser();
+  }
+
+  function DeleteUser(cedula, nombre) {
+    if(!(confirm(`¿Deseas eliminar a: ${nombre}`))) return;
+
+    const fetcDeleteUser = async () => {
+      const data = await Services_DeleteUser(cedula).then(_ => {
+        GetUsers(true);
+      });
+
+      return data;
+    }
+
+    fetcDeleteUser();
+
   }
 
   return (
@@ -78,6 +96,7 @@ export const UsersContextProvider = ({ children }) => {
 
         GetUsers,
         CreateUser,
+        DeleteUser
       }}
     >
       {children}

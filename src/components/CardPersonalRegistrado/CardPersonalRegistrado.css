@@ -1,0 +1,50 @@
+@font-face {
+  font-family: "Roboto";
+  src: url(../../fonts/Roboto-Regular.ttf);
+}
+
+.cardPersonal{
+  position: relative;
+  /* height: 3rem; */
+  display: flex;
+  align-items: center;
+  /* box-shadow: 0 0 2.5px #000; */
+  padding: .85rem 1.2rem;
+  background-color: rgba(1, 80, 170, .05);
+  border-radius: 5px;
+}
+  .cardPersonal > .información{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    text-transform: uppercase;
+    font-family: "Roboto";
+  }
+    .cardPersonal > .información h3{
+      color: rgba(1, 80, 170, .8);
+    }
+    .cardPersonal > .información p{
+      font-size: 19px;
+    }
+    .cardPersonal > .información svg{
+      color: rgb(1, 80, 170);
+    }
+
+  .cardPersonal .opciones{
+    position: absolute;
+    right: 1.25rem;
+  }
+    .cardPersonal .opciones li{
+      background-color: darkred;
+      color: #fff;
+      padding: .5rem 1rem;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 200ms ease;
+    }
+    .cardPersonal .opciones li:hover{
+      color: darkred;
+      background-color: #fff;
+    }
