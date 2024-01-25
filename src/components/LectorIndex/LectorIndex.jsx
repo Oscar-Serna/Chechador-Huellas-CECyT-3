@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-import {
-  FingerprintReader,
-  SampleFormat,
-} from "@digitalpersona/devices";
+import { FingerprintReader, SampleFormat } from "@digitalpersona/devices";
 
 import "../../modules/WebSDK";
 
@@ -11,6 +8,7 @@ import { GiFingerPrint } from "react-icons/gi";
 import { TbHandFinger } from "react-icons/tb";
 
 import "./LectorIndex.css";
+import { Services_CompareFingerprint } from "../../services/compare.services";
 
 export const LectorIndex = () => {
   const [reader, setReader] = useState(null);
@@ -37,18 +35,31 @@ export const LectorIndex = () => {
     }
   }, [reader]);
 
-  function onDeviceConnected() {setReaderState(true)}
+  function onDeviceConnected() {
+    setReaderState(true);
+  }
 
-  function onDeviceDisconnected() {setReaderState(false)}
+  function onDeviceDisconnected() {
+    setReaderState(false);
+  }
 
   function onAcquisitionStarted() {}
 
-  function onAcquisitionStopped() {onAcquisitionStarted()}
+  function onAcquisitionStopped() {
+    onAcquisitionStarted();
+  }
 
   function onSamplesAcquired(e) {
-    setScanningState(<span style={{color: "green"}}>Se escaneó con éxito</span>);
+    setScanningState(
+      <span style={{ color: "green" }}>Se escaneó con éxito</span>
+    );
+
+    Services_CompareFingerprint(
+      fixFingerprintImage(e.samples[0])
+      );
+
     setTimeout(() => {
-      setScanningState("Listo para escanear...")
+      setScanningState("Listo para escanear...");
       setPrevImage(null);
     }, 1750);
     setPrevImage(fixFingerprintImage(e.samples[0]));
@@ -69,7 +80,7 @@ export const LectorIndex = () => {
         "44CB0200-2776-8548-94FE-F89DDB7A0BB4"
       )
       .then((response) => {
-        setScanningState("Listo para escanear...")
+        setScanningState("Listo para escanear...");
       })
       .catch((error) => {
         console.error(error);
@@ -99,11 +110,13 @@ export const LectorIndex = () => {
       </div>
       <p className="readerState">
         {readerState ? (
-          <span style={{ color: "green" }}>El lector de huellas fue encontrado y funcionando...</span>
+          <span style={{ color: "green" }}>
+            El lector de huellas fue encontrado y funcionando...
+          </span>
         ) : (
           <span style={{ color: "red" }}>
-            ¡¡ Lector de huellas no encontrado !! <br /> ( Verifique que esté conectado
-            correctamente )
+            ¡¡ Lector de huellas no encontrado !! <br /> ( Verifique que esté
+            conectado correctamente )
           </span>
         )}
       </p>

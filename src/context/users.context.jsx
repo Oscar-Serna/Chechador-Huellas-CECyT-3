@@ -75,7 +75,7 @@ export const UsersContextProvider = ({ children }) => {
   }
 
   function DeleteUser(cedula, nombre) {
-    if(!(confirm(`¿Deseas eliminar a: ${nombre}`))) return;
+    if(!(confirm(`¿Seguro deseas eliminar a:?\n\n${nombre}`))) return;
 
     const fetcDeleteUser = async () => {
       const data = await Services_DeleteUser(cedula).then(_ => {

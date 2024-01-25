@@ -1,9 +1,9 @@
 import axios from "axios";
-import { baseURL } from "./baseURL";
+import { BASE_URL } from "./baseURL.js";
 
 export const Services_GetAllUsers = async () => {
   try {
-    const { data } = await axios.get(`${baseURL}/api/users/?all=true&rfc='null'`);
+    const { data } = await axios.get(`${BASE_URL}/api/users/?all=true&rfc='null'`);
 
     return data;
   } catch (error) {
@@ -14,7 +14,7 @@ export const Services_GetAllUsers = async () => {
 
 export const Services_GetUser = async (rfc) => {
   try {
-    const { data } = await axios.get(`${baseURL}/api/users/?all=false&rfc='${rfc}'`);
+    const { data } = await axios.get(`${BASE_URL}/api/users/?all=false&rfc='${rfc}'`);
 
     return data;
   } catch (error) {
@@ -25,7 +25,7 @@ export const Services_GetUser = async (rfc) => {
 
 export const Services_CreateUser = async (userData) => {
   try {
-    const { data } = await axios.post(`${baseURL}/api/users/`, userData);
+    const { data } = await axios.post(`${BASE_URL}/api/users/`, userData);
 
     return data;
   } catch (error) {
@@ -36,7 +36,7 @@ export const Services_CreateUser = async (userData) => {
 
 export const Services_DeleteUser = async (cedula) => {
   try {
-    const result = await axios.delete(`${baseURL}/api/users/?cedula=${cedula}`);
+    const result = await axios.delete(`${BASE_URL}/api/users/?cedula=${cedula}`);
 
     return result;
   } catch (error) {
