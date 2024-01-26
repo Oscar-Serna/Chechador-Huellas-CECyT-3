@@ -46,9 +46,25 @@
 
 
   .personalRegistrado .listaPersonal{
-
     height: calc(100vh - 13.5rem);
+    overflow-y: scroll;
     border-radius: 5px;
+    padding-right: .75rem;
+  }
+  .personalRegistrado .listaPersonal::-webkit-scrollbar{
+    width: 7.5px;
+    background-color: rgb(1, 80, 170);
+    border-radius: 5px;
+  }
+  .personalRegistrado .listaPersonal::-webkit-scrollbar-thumb{
+      background: rgba(255, 255, 255, 0.6);
+      border-radius: 15px;
+  }
+  .personalRegistrado .listaPersonal::-webkit-scrollbar-thumb:hover{
+      background: rgba(255, 255, 255, 0.5);
+  }
+  .personalRegistrado .listaPersonal::-webkit-scrollbar-thumb:active{
+      background-color: rgba(255, 255, 255, 0.4);
   }
     .personalRegistrado .listaPersonal > ul{
       position: relative;

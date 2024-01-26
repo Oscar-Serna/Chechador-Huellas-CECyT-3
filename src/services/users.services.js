@@ -12,9 +12,9 @@ export const Services_GetAllUsers = async () => {
   }
 }
 
-export const Services_GetUser = async (rfc) => {
+export const Services_GetUser = async (cedula) => {
   try {
-    const { data } = await axios.get(`${BASE_URL}/api/users/?all=false&rfc='${rfc}'`);
+    const { data } = await axios.get(`${BASE_URL}/api/users/?all=false&cedula=${parseInt(cedula)}`);
 
     return data;
   } catch (error) {

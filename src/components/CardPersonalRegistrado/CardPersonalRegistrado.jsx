@@ -16,7 +16,7 @@ export const CardPersonalRegistrado = ({
   const { DeleteUser } = useContext(UsersContext);
 
   return (
-    <li className="cardPersonal" data-cedula={cedula} data-rfc={rfc}>
+    <li className="cardPersonal" data-cedula={cedula} data-rfc={rfc} data-nombre={nombre} data-puesto={t_personal}>
       <div className="información">
         <h3>{id + 1}.-</h3>
         <p>

@@ -20,17 +20,16 @@ export const RelojIndex = () => {
   }, []);
 
   function getReloj() {
+    const horas = [
+      12, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+    ];
+
     const date = new Date();
-    let hora =
-      date.getHours() > 12
-        ? `0${date.getHours() - 12}`
-        : date.getHours();
+    let hora = horas[date.getHours()];
     const minutos =
       date.getMinutes() < 10 ? `0${date.getMinutes()}` : date.getMinutes();
     const segundos =
       date.getSeconds() < 10 ? `0${date.getSeconds()}` : date.getSeconds();
-
-    if (hora === 0) hora += 12;
 
     setReloj(`${hora}:${minutos}:${segundos}`);
   }

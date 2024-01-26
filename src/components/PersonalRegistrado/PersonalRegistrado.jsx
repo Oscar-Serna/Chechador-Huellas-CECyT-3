@@ -8,7 +8,11 @@ import "./PersonalRegistrado.css";
 import { UsersContext } from "../../context/users.context";
 
 export const PersonalRegistrado = () => {
-  const { allUsers } = useContext(UsersContext);
+  const { allUsers, GetUsers } = useContext(UsersContext);
+
+  useEffect(() => {
+    GetUsers(true);
+  }, []);
 
   function renderPersonal() {
     if (allUsers.length === 0)
@@ -35,33 +39,39 @@ export const PersonalRegistrado = () => {
   }
 
   function searchPersonal(identifier) {
-
     const personal = document.querySelectorAll(".listaPersonal > ul > li");
 
-    personal.forEach((persona, index) => {
+    personal.forEach(persona => {
       const cedula = persona.dataset.cedula;
       const rfc = persona.dataset.rfc;
+      const nombre = persona.dataset.nombre;
+      const puesto = persona.dataset.puesto;
 
-      if (!(cedula.includes(identifier) || rfc.includes(identifier))) {
+      if (
+        !(
+          cedula.includes(identifier) ||
+          rfc.includes(identifier) ||
+          nombre.includes(identifier) ||
+          puesto.includes(identifier)
+        )
+      ) {
         persona.style.display = "none";
-      }else {
+      } else {
         persona.style.display = "flex";
       }
     });
-
-
   }
 
   return (
     <section className="personalRegistrado">
       <article className="search">
-        <h3>Personal que cuenta con huella digital</h3>
+        <h3>Personal que cuenta con huella dactilar</h3>
         <div>
           <IoIosSearch />
           <input
             type="text"
             placeholder="Buscar personal"
-            onChange={e => {
+            onChange={(e) => {
               searchPersonal(e.target.value.toUpperCase());
             }}
           />

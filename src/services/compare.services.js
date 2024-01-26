@@ -3,9 +3,29 @@ import { BASE_URL } from "./baseURL.js";
 
 export const Services_CompareFingerprint = async (fingerprint) => {
   try {
-    // HACEMOS LA PETICIÓN POST PARA MANDAR LA IMAGEN EN BASE64 POR LA CADENA TAN LARGA Y NO PERDER DATOS O QUE HAYA PROBLEMAS DE URL
     const { data } = await axios.post(`${BASE_URL}/api/compare/`, { fingerprint });
 
-    console.log(data.compare);
-  } catch (error) {}
+    const { compare, filename } = data;
+
+    if(compare === true) {
+
+      const cedula = () => {
+        let cedulaTemporal = ""
+
+        for(let i = 0; i < filename.length; i++) {
+          if(filename[i] != "-") cedulaTemporal += filename[i];
+          else return { result: true, cedula: cedulaTemporal };
+        }
+
+      }
+
+      return cedula();
+
+    }else{
+      return { result: false, cedula: "" };
+    }
+  } catch (error) {
+    console.error("Error desde compare.services.js - CompareFingerprints");
+    console.error(error);
+  }
 };

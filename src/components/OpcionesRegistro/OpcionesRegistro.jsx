@@ -19,7 +19,7 @@ export const OpcionesRegistro = ({ animationRegistro }) => {
         </div>
         <div>
           <IoFingerPrint />
-          <input type="button" value="Asignar huellas digitales" onClick={() => {}}/>
+          <input type="button" value="Asignar huellas dactilares" onClick={() => {}}/>
         </div>
       </article>
     </section>

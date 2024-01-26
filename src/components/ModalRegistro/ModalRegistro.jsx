@@ -9,6 +9,7 @@ import "../../modules/WebSDK";
 import "./ModalRegistro.css";
 
 import { UsersContext } from "../../context/users.context";
+import { Navigate, useSearchParams } from "react-router-dom";
 
 export const ModalRegistro = ({ modalState, animationRegistro }) => {
   const numeroHuellas = 12;
@@ -28,7 +29,17 @@ export const ModalRegistro = ({ modalState, animationRegistro }) => {
   let [scanCounter, setScanCounter] = useState(0);
 
   // CONTEXTO
-  const { GetUsers, CreateUser } = useContext(UsersContext);
+  const { CreateUser } = useContext(UsersContext);
+
+  const [navigateTo, setNavigateTo] = useState(null);
+
+  const [searchParams, _] = useSearchParams();
+
+  const nombreParam = searchParams.get("nombre");
+  const cedulaParam = searchParams.get("cedula");
+  const rfcParam = searchParams.get("rfc");
+  const puestoParam = searchParams.get("puesto");
+  const turnoParam = searchParams.get("turno");
 
   // INICIALIZAMOS "reader" PARA DEFINIR EL OBJETO "FingerprintReader"
   useEffect(() => {
@@ -207,8 +218,30 @@ export const ModalRegistro = ({ modalState, animationRegistro }) => {
       huellasLS,
       deleteLocalStorage
     );
-
   }
+
+  function handleRestartFingerprints() {
+    const inputs = document.querySelectorAll(".inputs > input");
+
+    let nombre = inputs[0].value;
+    let cedula = inputs[1].value;
+    let rfc = inputs[2].value;
+    let puesto = inputs[3].value;
+    let turno = inputs[4].value;
+
+    localStorage.removeItem("huellas");
+    setNavigateTo(
+      <Navigate
+        to={`/registro/?nombre=${nombre}&cedula=${cedula}&rfc=${rfc}&puesto=${puesto}&turno=${turno}`}
+      />
+    );
+  }
+
+  useEffect(() => {
+    if (navigateTo != null) {
+      deleteLocalStorage();
+    }
+  }, [navigateTo]);
 
   return (
     <section
@@ -223,11 +256,31 @@ export const ModalRegistro = ({ modalState, animationRegistro }) => {
       <article>
         <h3>Agregar Personal</h3>
         <div className="inputs">
-          <input type="text" placeholder="Nombre completo" />
-          <input type="text" placeholder="Cédula" />
-          <input type="text" placeholder="RFC" />
-          <input type="text" placeholder="Puesto laboral" />
-          <input type="text" placeholder="Turno" />
+          <input
+            type="text"
+            defaultValue={nombreParam != null ? nombreParam : ""}
+            placeholder="Nombre completo"
+          />
+          <input
+            type="text"
+            defaultValue={cedulaParam != null ? cedulaParam : ""}
+            placeholder="Cédula"
+          />
+          <input
+            type="text"
+            defaultValue={rfcParam != null ? rfcParam : ""}
+            placeholder="RFC"
+          />
+          <input
+            type="text"
+            defaultValue={puestoParam != null ? puestoParam : ""}
+            placeholder="Puesto laboral"
+          />
+          <input
+            type="text"
+            defaultValue={turnoParam != null ? turnoParam : ""}
+            placeholder="Turno"
+          />
         </div>
         <div className="fingerprints">
           <div>
@@ -252,13 +305,15 @@ export const ModalRegistro = ({ modalState, animationRegistro }) => {
               <li className="finger" key={index}>
                 {huella === false ? (
                   <IoMdFingerPrint />
-                ) : (
+                ) : JSON.parse(localStorage.getItem("huellas")) != null ? (
                   <img
                     src={`data:image/jpeg;base64,${
                       JSON.parse(localStorage.getItem("huellas"))[index]
                     }`}
                     alt="Huella digital del personal"
                   />
+                ) : (
+                  <IoMdFingerPrint />
                 )}
                 <p>Huella {index + 1}</p>
               </li>
@@ -268,10 +323,10 @@ export const ModalRegistro = ({ modalState, animationRegistro }) => {
         <div className="buttons">
           <input
             type="button"
-            value="Quitar huellas"
+            value="Reiniciar huellas"
             className="reiniciar"
             onClick={() => {
-              deleteLocalStorage();
+              handleRestartFingerprints();
             }}
           />
           <input
@@ -292,6 +347,7 @@ export const ModalRegistro = ({ modalState, animationRegistro }) => {
           />
         </div>
       </article>
+      {navigateTo}
     </section>
   );
 };

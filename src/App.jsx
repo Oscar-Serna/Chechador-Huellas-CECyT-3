@@ -3,8 +3,8 @@ import { Index } from './pages/Index'
 
 import { Header } from './components/Header/Header'
 import { Registro } from './pages/Registro/Registro'
-
-// import "../ES6Promise.js"
+import { PersonalComparado } from './pages/PersonalComparado/PersonalComparado'
+import { UsersContextProvider } from './context/users.context'
 
 function App() {
 
@@ -23,6 +23,15 @@ function App() {
           <Registro />
         </>
       }/>
+
+      <Route path='/personal' element={
+        <>
+          <Header />
+          <UsersContextProvider>
+            <PersonalComparado />
+          </UsersContextProvider>
+        </>
+      } />
     </Routes>
   )
 }

@@ -1,4 +1,4 @@
-import React, { createContext, useEffect, useState } from "react";
+import React, { createContext, useState } from "react";
 
 import {
   Services_CreateUser,
@@ -10,21 +10,18 @@ import {
 export const UsersContext = createContext();
 
 export const UsersContextProvider = ({ children }) => {
+  const [allUsers, setAllUsers] = useState([]);
 
-  const [ allUsers, setAllUsers ] = useState([]);
+  const [userCompared, setUserCompared] = useState({ rows: null, imageUser: null });
 
-  useEffect(() => {
-    GetUsers(true);
-  }, []);
-
-  function GetUsers(isAll, rfc) {
+  function GetUsers(isAll, cedula) {
     if (isAll === true) {
       const fetchGetUsers = async () => {
         const result = await Services_GetAllUsers();
 
         setAllUsers(result);
 
-        console.log("AllUsers", result)
+        console.log("AllUsers", result);
 
         return result;
       };
@@ -32,13 +29,13 @@ export const UsersContextProvider = ({ children }) => {
       fetchGetUsers();
     }
 
-    if (rfc != null) {
-      if (rfc.trim() === "") throw new Error("Debes de ingresar un RFC");
+    if (cedula != null) {
+      if (cedula.trim() === "") throw new Error("Debes de ingresar un RFC");
 
       const fetchGetUsers = async () => {
-        const result = await Services_GetUser(rfc);
+        const result = await Services_GetUser(cedula);
 
-        console.log(result);
+        setUserCompared(result);
 
         return result;
       };
@@ -47,56 +44,71 @@ export const UsersContextProvider = ({ children }) => {
     }
   }
 
-  function CreateUser(nombre, cedula, rfc, t_personal, turno, huellas, deleteLocalStorage) {
+  function CreateUser(
+    nombre,
+    cedula,
+    rfc,
+    t_personal,
+    turno,
+    huellas,
+    deleteLocalStorage
+  ) {
     const fetchCreateUser = async () => {
-      const data = await Services_CreateUser({
+      await Services_CreateUser({
         nombre,
         cedula,
         rfc,
         t_personal,
         turno,
         huellas,
-      }).then(_ => {
-        deleteLocalStorage();
+      }).then(dataResponse => {
+
+        if (dataResponse.saveInServer === "Exitoso")
+          return deleteLocalStorage();
+        if (dataResponse.saveInServer === "Error") {
+          alert("Hubo un error al agregar el miembro");
+          deleteLocalStorage();
+        }
+        if (dataResponse.saveInServer === "Existe") alert("Este usuario ya existe");
+
       });
-
-      if (data.saveInServer === "Exitoso")
-        alert("El miembro fue registrado con éxito");
-      if (data.saveInServer === "Error")
-        alert("Hubo un error al agregar el miembro");
-      if (data.saveInServer === "Existe") alert("Este usuario ya existe");
-
-      // window.location.reload();s
-
-      return data;
     };
 
     fetchCreateUser();
   }
 
   function DeleteUser(cedula, nombre) {
-    if(!(confirm(`¿Seguro deseas eliminar a:?\n\n${nombre}`))) return;
+    const promptDelete = prompt(
+      `ELIMINAR PERSONAL\nIntroduzca la cédula de ${nombre} - ${cedula}:`
+    );
+
+    if (!promptDelete) return;
+
+    if (promptDelete != cedula.toString()) {
+      alert("Incorrecto... Vuelva a intentarlo");
+      DeleteUser(cedula, nombre);
+      return;
+    }
 
     const fetcDeleteUser = async () => {
-      const data = await Services_DeleteUser(cedula).then(_ => {
+      const data = await Services_DeleteUser(cedula).then((_) => {
         GetUsers(true);
       });
 
       return data;
-    }
+    };
 
     fetcDeleteUser();
-
   }
 
   return (
     <UsersContext.Provider
       value={{
         allUsers,
-
+        userCompared,
         GetUsers,
         CreateUser,
-        DeleteUser
+        DeleteUser,
       }}
     >
       {children}

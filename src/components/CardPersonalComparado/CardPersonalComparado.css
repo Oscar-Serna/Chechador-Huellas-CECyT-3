@@ -1,0 +1,67 @@
+@font-face {
+  font-family: "Roboto";
+  src: url(../../fonts/Roboto-Regular.ttf);
+}
+
+.cardPersonalRegistrado{
+  position: absolute;
+  top: calc(50% + 1.75rem);
+  left: 50%;
+  min-width: 50rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  text-align: center;
+  transform: translate(-50%, -50%);
+  border-radius: 5px;
+}
+  .cardPersonalRegistrado > h3{
+    color: rgba(1, 80, 170, 1);
+    font-size: 5rem;
+  }
+
+  .containerInfoPersonalRegistrado{
+    min-height: 25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    padding: 1rem 2rem;
+    border-radius: 10px;
+    background-color: rgba(1, 80, 170, .075);
+    font-family: "Roboto";
+  }
+
+    .infoPersonalRegistrado{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+      .infoPersonalRegistrado > p.nombre{
+        font-weight: bold;
+        font-size: 2.75rem;
+      }
+      .infoPersonalRegistrado > p.cedula{
+        opacity: .5;
+        font-weight: bold;
+        font-size: 2rem;
+        padding-top: 1rem;
+      }
+
+    .imagenPersonalRegistrado{
+      min-width: 17rem;
+      min-height: 17rem;
+      max-width: 17rem;
+      max-height: 17rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+      .imagenPersonalRegistrado img{
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }

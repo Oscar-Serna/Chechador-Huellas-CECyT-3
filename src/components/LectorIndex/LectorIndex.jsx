@@ -1,4 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+
+import { Navigate } from "react-router-dom";
 
 import { FingerprintReader, SampleFormat } from "@digitalpersona/devices";
 
@@ -8,14 +10,19 @@ import { GiFingerPrint } from "react-icons/gi";
 import { TbHandFinger } from "react-icons/tb";
 
 import "./LectorIndex.css";
-import { Services_CompareFingerprint } from "../../services/compare.services";
+
+import { CompareContext } from "../../context/compare.context";
 
 export const LectorIndex = () => {
+  const { CompareUser, resultCompare, setResultCompare, compareCedula } = useContext(CompareContext);
+
   const [reader, setReader] = useState(null);
   const [readerState, setReaderState] = useState(false);
   const [scanningState, setScanningState] = useState("No esta listo");
 
   const [prevImage, setPrevImage] = useState(null);
+
+  const [ navigateTo, setNavigateTo ] = useState(null);
 
   useEffect(() => {
     setReader(new FingerprintReader());
@@ -29,7 +36,7 @@ export const LectorIndex = () => {
       reader.on("AcquisitionStopped", onAcquisitionStopped);
       reader.on("SamplesAcquired", onSamplesAcquired);
 
-      Promise.all([reader.enumerateDevices()]).then((results) => {
+      Promise.all([reader.enumerateDevices()]).then(_ => {
         startCaptura();
       });
     }
@@ -50,13 +57,15 @@ export const LectorIndex = () => {
   }
 
   function onSamplesAcquired(e) {
+    setResultCompare(null);
+
     setScanningState(
       <span style={{ color: "green" }}>Se escaneó con éxito</span>
     );
 
-    Services_CompareFingerprint(
-      fixFingerprintImage(e.samples[0])
-      );
+    const fingerprintFixed = fixFingerprintImage(e.samples[0]);
+
+    CompareUser(fingerprintFixed);
 
     setTimeout(() => {
       setScanningState("Listo para escanear...");
@@ -64,6 +73,14 @@ export const LectorIndex = () => {
     }, 1750);
     setPrevImage(fixFingerprintImage(e.samples[0]));
   }
+
+  useEffect(() => {
+    if(resultCompare === true){
+      setNavigateTo(<Navigate to={`/personal/?cedula=${compareCedula}`}/>);
+    }else if(resultCompare === false) {
+      alert("LA HUELLA NO COINCIDE\nVuelva a intentarlo...");
+    }
+  }, [resultCompare]);
 
   function fixFingerprintImage(textImage) {
     let formatImage = textImage;
@@ -79,7 +96,7 @@ export const LectorIndex = () => {
         SampleFormat.PngImage,
         "44CB0200-2776-8548-94FE-F89DDB7A0BB4"
       )
-      .then((response) => {
+      .then(_ => {
         setScanningState("Listo para escanear...");
       })
       .catch((error) => {
@@ -120,6 +137,7 @@ export const LectorIndex = () => {
           </span>
         )}
       </p>
+      {navigateTo}
     </section>
   );
 };
