@@ -59,6 +59,8 @@ export const LectorIndex = () => {
   function onSamplesAcquired(e) {
     setResultCompare(null);
 
+    console.log(e)
+
     setScanningState(
       <span style={{ color: "green" }}>Se escaneó con éxito</span>
     );
@@ -78,7 +80,7 @@ export const LectorIndex = () => {
     if(resultCompare === true){
       setNavigateTo(<Navigate to={`/personal/?cedula=${compareCedula}`}/>);
     }else if(resultCompare === false) {
-      alert("LA HUELLA NO COINCIDE\nVuelva a intentarlo...");
+      alert("PUNTUACIÓN MINIMA NO ALCANZADA, VUELVA A INTENTARLO");
     }
   }, [resultCompare]);
 

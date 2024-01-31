@@ -12,7 +12,7 @@ import { UsersContext } from "../../context/users.context";
 import { Navigate, useSearchParams } from "react-router-dom";
 
 export const ModalRegistro = ({ modalState, animationRegistro }) => {
-  const numeroHuellas = 12;
+  const numeroHuellas = 3;
 
   const [huellas, setHuellas] = useState(new Array(numeroHuellas).fill(false));
   const [reader, setReader] = useState(null);
@@ -40,6 +40,7 @@ export const ModalRegistro = ({ modalState, animationRegistro }) => {
   const rfcParam = searchParams.get("rfc");
   const puestoParam = searchParams.get("puesto");
   const turnoParam = searchParams.get("turno");
+  const abrirModal = searchParams.get("modal");
 
   // INICIALIZAMOS "reader" PARA DEFINIR EL OBJETO "FingerprintReader"
   useEffect(() => {
@@ -48,6 +49,8 @@ export const ModalRegistro = ({ modalState, animationRegistro }) => {
     // window.addEventListener("load", deleteLocalStorage);
 
     // window.removeEventListener("DOMContentLoaded", deleteLocalStorage);
+
+    if(abrirModal === "abierto") animationRegistro();
   }, []);
 
   // INICIALIZAMOS LA ESCUCHA DE EVENTOS DEL LECTOR Y OBTENEMOS SU "UID" (CUANDO SE MODIFIQUE EL "reader")
@@ -164,8 +167,9 @@ export const ModalRegistro = ({ modalState, animationRegistro }) => {
   }
 
   // ELIMINAR LOCALSTORAGE
-  function deleteLocalStorage() {
+  function deleteLocalStorage(inicio) {
     localStorage.removeItem("huellas");
+    if(inicio === true) window.location.href = "/#/registro/"
     window.location.reload();
   }
 
@@ -232,7 +236,7 @@ export const ModalRegistro = ({ modalState, animationRegistro }) => {
     localStorage.removeItem("huellas");
     setNavigateTo(
       <Navigate
-        to={`/registro/?nombre=${nombre}&cedula=${cedula}&rfc=${rfc}&puesto=${puesto}&turno=${turno}`}
+        to={`/registro/?nombre=${nombre}&cedula=${cedula}&rfc=${rfc}&puesto=${puesto}&turno=${turno}&modal=abierto`}
       />
     );
   }

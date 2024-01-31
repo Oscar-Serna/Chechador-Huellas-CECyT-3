@@ -64,10 +64,10 @@ export const UsersContextProvider = ({ children }) => {
       }).then(dataResponse => {
 
         if (dataResponse.saveInServer === "Exitoso")
-          return deleteLocalStorage();
+          return deleteLocalStorage(true);
         if (dataResponse.saveInServer === "Error") {
           alert("Hubo un error al agregar el miembro");
-          deleteLocalStorage();
+          deleteLocalStorage(true);
         }
         if (dataResponse.saveInServer === "Existe") alert("Este usuario ya existe");
 
