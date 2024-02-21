@@ -32,8 +32,8 @@ export const PersonalRegistrado = () => {
         nombre={persona.nombre}
         cedula={persona.cedula}
         rfc={persona.rfc}
-        t_personal={persona.t_personal}
-        num_huellas={persona.num_huellas}
+        t_personal={persona.puesto}
+        num_huellas={persona.numHuellas}
       />
     ));
   }

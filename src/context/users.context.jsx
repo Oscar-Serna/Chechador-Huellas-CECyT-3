@@ -12,7 +12,7 @@ export const UsersContext = createContext();
 export const UsersContextProvider = ({ children }) => {
   const [allUsers, setAllUsers] = useState([]);
 
-  const [userCompared, setUserCompared] = useState({ rows: null, imageUser: null });
+  const [userCompared, setUserCompared] = useState(null);
 
   function GetUsers(isAll, cedula) {
     if (isAll === true) {
@@ -35,6 +35,8 @@ export const UsersContextProvider = ({ children }) => {
       const fetchGetUsers = async () => {
         const result = await Services_GetUser(cedula);
 
+        console.log("RESULT DEL FETCH USER: ", result);
+
         setUserCompared(result);
 
         return result;
@@ -48,28 +50,31 @@ export const UsersContextProvider = ({ children }) => {
     nombre,
     cedula,
     rfc,
-    t_personal,
+    puesto,
     turno,
-    huellas,
+    huellasBase64,
     deleteLocalStorage
   ) {
     const fetchCreateUser = async () => {
+      const num_huellas = huellasBase64.length;
+
       await Services_CreateUser({
         nombre,
         cedula,
         rfc,
-        t_personal,
+        puesto,
         turno,
-        huellas,
+        num_huellas,
+        huellasBase64,
       }).then(dataResponse => {
 
-        if (dataResponse.saveInServer === "Exitoso")
+        if (dataResponse === "CREADO")
           return deleteLocalStorage(true);
-        if (dataResponse.saveInServer === "Error") {
+        if (dataResponse === "ERROR") {
           alert("Hubo un error al agregar el miembro");
           deleteLocalStorage(true);
         }
-        if (dataResponse.saveInServer === "Existe") alert("Este usuario ya existe");
+        if (dataResponse.saveInServer === "YA EXISTE") alert("Este usuario ya existe");
 
       });
     };

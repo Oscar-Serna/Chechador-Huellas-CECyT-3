@@ -64,7 +64,7 @@
     .seccionLectorIndex .preview svg{
       width: 10rem;
       height: 10rem;
-      color: rgba(1, 80, 170, 1);
+      color: rgb(1, 80, 170);
       opacity: .4;
     }
 
@@ -75,6 +75,53 @@
       text-transform: uppercase;
       padding-top: .75rem;
       color: rgba(0, 0, 0, .5);
+    }
+
+
+.modalLoading{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, .25);
+  transition: 150ms ease;
+}
+.modalLoading.active{
+  opacity: 1;
+  visibility: visible;
+}
+.modalLoading.inactive{
+  opacity: 0;
+  visibility: hidden;
+}
+.modalLoading.incorrect{
+  background-color: darkred;
+  color: #fff;
+}
+  .modalLoading .contentModalLoading{
+    width: 35rem;
+    height: 15rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    /* background-color: rgba(1, 80, 170, 1); */
+    background-color: #fff;
+  }
+    .modalLoading .contentModalLoading h3{
+      /* color: #fff; */
+      font-size: 26px;
+      text-transform: uppercase;
+    }
+    .modalLoading .contentModalLoading img{
+      width: 5rem;
+      height: 5rem;
+      padding-top: 1.5rem;
     }
 
 .readerState{

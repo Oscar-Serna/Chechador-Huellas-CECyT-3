@@ -22,13 +22,17 @@ export const PersonalComparado = () => {
 
     setTimeout(() => {
       window.location.href = "/";
-    }, 4000);
+    }, 2000);
   }, []);
 
   function renderUser() {
-    if(userCompared.rows === null) return <p>Sin información</p>;
+    if(userCompared === null) return <p>Sin información</p>;
 
-    const dataUser = userCompared.rows;
+    const dataUser = userCompared;
+
+    console.log("data user compared: ", dataUser)
+
+    // return;
 
     return dataUser.map((user, index) => (
       <CardPersonalComparado
@@ -36,7 +40,7 @@ export const PersonalComparado = () => {
         nombre={user.nombre}
         cedula={user.cedula}
         rfc={user.rfc}
-        imagenBase64={userCompared.imageUser}
+        imagenBase64={user.imagenBase64}
       />
     ))
   }

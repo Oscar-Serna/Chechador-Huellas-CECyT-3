@@ -53,11 +53,11 @@
   }
   .personalRegistrado .listaPersonal::-webkit-scrollbar{
     width: 7.5px;
-    background-color: rgb(1, 80, 170);
+    background-color: rgba(1, 80, 170, 0.25);
     border-radius: 5px;
   }
   .personalRegistrado .listaPersonal::-webkit-scrollbar-thumb{
-      background: rgba(255, 255, 255, 0.6);
+      background: rgb(1, 80, 170);
       border-radius: 15px;
   }
   .personalRegistrado .listaPersonal::-webkit-scrollbar-thumb:hover{

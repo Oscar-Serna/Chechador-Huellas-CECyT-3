@@ -12,7 +12,7 @@ import { UsersContext } from "../../context/users.context";
 import { Navigate, useSearchParams } from "react-router-dom";
 
 export const ModalRegistro = ({ modalState, animationRegistro }) => {
-  const numeroHuellas = 3;
+  const numeroHuellas = 1;
 
   const [huellas, setHuellas] = useState(new Array(numeroHuellas).fill(false));
   const [reader, setReader] = useState(null);

@@ -13,8 +13,13 @@ import "./LectorIndex.css";
 
 import { CompareContext } from "../../context/compare.context";
 
+import loadingGIF from "../../img/loadingGIF.gif";
+
 export const LectorIndex = () => {
-  const { CompareUser, resultCompare, setResultCompare, compareCedula } = useContext(CompareContext);
+  const { CompareUser, resultCompare, setResultCompare, compareCedula } =
+    useContext(CompareContext);
+
+  const [fetchState, setFetchState] = useState(false);
 
   const [reader, setReader] = useState(null);
   const [readerState, setReaderState] = useState(false);
@@ -22,7 +27,13 @@ export const LectorIndex = () => {
 
   const [prevImage, setPrevImage] = useState(null);
 
-  const [ navigateTo, setNavigateTo ] = useState(null);
+  const [navigateTo, setNavigateTo] = useState(null);
+
+  const [ modalLoadingState, setModalLoadingState ] = useState("inactive");
+
+  const [ comparisionMessage, setComparisionMessage ] = useState(<h3 style={{color: "rgb(1, 80, 170)"}}>Comparando huella dactilar...</h3>);
+
+  const [ comparisionResult, setComparisionResult ] = useState("");
 
   useEffect(() => {
     setReader(new FingerprintReader());
@@ -36,7 +47,7 @@ export const LectorIndex = () => {
       reader.on("AcquisitionStopped", onAcquisitionStopped);
       reader.on("SamplesAcquired", onSamplesAcquired);
 
-      Promise.all([reader.enumerateDevices()]).then(_ => {
+      Promise.all([reader.enumerateDevices()]).then((_) => {
         startCaptura();
       });
     }
@@ -57,9 +68,18 @@ export const LectorIndex = () => {
   }
 
   function onSamplesAcquired(e) {
-    setResultCompare(null);
 
-    console.log(e)
+    if (fetchState === true) {
+      console.log("SE INTENTA HACER PETICION CUANDO ESTA ESCANEANDO...");
+      return;
+    };
+
+    if (fetchState === false) {
+      setFetchState(true);
+      setModalLoadingState("active");
+    }
+
+    setResultCompare(null);
 
     setScanningState(
       <span style={{ color: "green" }}>Se escaneó con éxito</span>
@@ -77,10 +97,21 @@ export const LectorIndex = () => {
   }
 
   useEffect(() => {
-    if(resultCompare === true){
-      setNavigateTo(<Navigate to={`/personal/?cedula=${compareCedula}`}/>);
-    }else if(resultCompare === false) {
-      alert("PUNTUACIÓN MINIMA NO ALCANZADA, VUELVA A INTENTARLO");
+    if (resultCompare === true) {
+      setNavigateTo(<Navigate to={`/personal/?cedula=${compareCedula}`} />);
+      setResultCompare(null);
+      setFetchState(false);
+      setModalLoadingState("inactive");
+    } else if (resultCompare === false) {
+      setResultCompare(null);
+      setFetchState(false);
+      setComparisionResult("incorrect")
+      setComparisionMessage(<h3 style={{ color: "darkred" }}>Vuelva a intentarlo...</h3>);
+      setTimeout(() => {
+        setModalLoadingState("inactive");
+        setComparisionMessage(<h3 style={{color: "rgb(1, 80, 170)"}}>Comparando huella dactilar</h3>);
+        setComparisionResult("");
+      }, 750);
     }
   }, [resultCompare]);
 
@@ -98,7 +129,7 @@ export const LectorIndex = () => {
         SampleFormat.PngImage,
         "44CB0200-2776-8548-94FE-F89DDB7A0BB4"
       )
-      .then(_ => {
+      .then((_) => {
         setScanningState("Listo para escanear...");
       })
       .catch((error) => {
@@ -107,39 +138,47 @@ export const LectorIndex = () => {
   }
 
   return (
-    <section className="seccionLectorIndex">
-      <div className="state">
-        <div>
-          <GiFingerPrint />
+    <>
+      <section className="seccionLectorIndex">
+        <div className="state">
+          <div>
+            <GiFingerPrint />
+          </div>
+          <p>{scanningState}</p>
         </div>
-        <p>{scanningState}</p>
-      </div>
-      <div className="preview">
-        <div>
-          {prevImage === null ? (
-            <TbHandFinger />
+        <div className="preview">
+          <div>
+            {prevImage === null ? (
+              <TbHandFinger />
+            ) : (
+              <img
+                src={`data:image/jpeg;base64,${prevImage}`}
+                alt="Previsualización de huella dactilar del cliente..."
+              />
+            )}
+          </div>
+          <p>Verifica que la huella se vea bien marcada</p>
+        </div>
+        <p className="readerState">
+          {readerState ? (
+            <span style={{ color: "green" }}>
+              El lector de huellas fue encontrado y funcionando...
+            </span>
           ) : (
-            <img
-              src={`data:image/jpeg;base64,${prevImage}`}
-              alt="Previsualización de huella dactilar del cliente..."
-            />
+            <span style={{ color: "red" }}>
+              ¡¡ Lector de huellas no encontrado !! <br /> ( Verifique que esté
+              conectado correctamente )
+            </span>
           )}
-        </div>
-        <p>Verifica que la huella se vea bien marcada</p>
-      </div>
-      <p className="readerState">
-        {readerState ? (
-          <span style={{ color: "green" }}>
-            El lector de huellas fue encontrado y funcionando...
-          </span>
-        ) : (
-          <span style={{ color: "red" }}>
-            ¡¡ Lector de huellas no encontrado !! <br /> ( Verifique que esté
-            conectado correctamente )
-          </span>
-        )}
-      </p>
-      {navigateTo}
-    </section>
+        </p>
+        {navigateTo}
+      </section>
+      <section className={`modalLoading ${modalLoadingState} ${comparisionResult}`}>
+        <article className="contentModalLoading">
+          { comparisionMessage }
+          <img src={loadingGIF} alt="GIF en referencia a la comparación de huellas dactilares" />
+        </article>
+      </section>
+    </>
   );
 };

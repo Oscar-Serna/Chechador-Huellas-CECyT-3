@@ -3,7 +3,9 @@ import { BASE_URL } from "./baseURL.js";
 
 export const Services_GetAllUsers = async () => {
   try {
-    const { data } = await axios.get(`${BASE_URL}/api/users/?all=true&rfc='null'`);
+    const { data } = await axios.get(`${BASE_URL}/empleados/obtenerEmpleados`, { headers: { AuthorizationKey : "un1d4d1nf0rm4t1c4c3cyt3" } });
+
+    console.log(data)
 
     return data;
   } catch (error) {
@@ -12,9 +14,9 @@ export const Services_GetAllUsers = async () => {
   }
 }
 
-export const Services_GetUser = async (cedula) => {
+export const Services_GetUser = async (empleadoCedula) => {
   try {
-    const { data } = await axios.get(`${BASE_URL}/api/users/?all=false&cedula=${parseInt(cedula)}`);
+    const { data } = await axios.get(`${BASE_URL}/empleados/ObtenerEmpleado`, { headers: { AuthorizationKey : "un1d4d1nf0rm4t1c4c3cyt3", cedula : empleadoCedula } });
 
     return data;
   } catch (error) {
@@ -25,7 +27,7 @@ export const Services_GetUser = async (cedula) => {
 
 export const Services_CreateUser = async (userData) => {
   try {
-    const { data } = await axios.post(`${BASE_URL}/api/users/`, userData);
+    const { data } = await axios.post(`${BASE_URL}/empleados/crearEmpleado`, userData, { headers: { AuthorizationKey : "un1d4d1nf0rm4t1c4c3cyt3" }});
 
     return data;
   } catch (error) {
@@ -34,9 +36,9 @@ export const Services_CreateUser = async (userData) => {
   }
 }
 
-export const Services_DeleteUser = async (cedula) => {
+export const Services_DeleteUser = async (empleadoCedula) => {
   try {
-    const result = await axios.delete(`${BASE_URL}/api/users/?cedula=${cedula}`);
+    const result = await axios.delete(`${BASE_URL}/empleados/eliminarEmpleado`, { headers: { AuthorizationKey : "un1d4d1nf0rm4t1c4c3cyt3", cedula : empleadoCedula }});
 
     return result;
   } catch (error) {

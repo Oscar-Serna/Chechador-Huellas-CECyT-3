@@ -3,23 +3,14 @@ import { BASE_URL } from "./baseURL.js";
 
 export const Services_CompareFingerprint = async (fingerprint) => {
   try {
-    const { data } = await axios.post(`${BASE_URL}/api/compare/`, { fingerprint });
 
-    const { compare, filename } = data;
+    const { data } = await axios.post(`${BASE_URL}/comparacion/obtenerComparacion`, { imagenBase64: fingerprint });
 
-    if(compare === true) {
+    const { result, cedula } = data;
 
-      const cedula = () => {
-        let cedulaTemporal = ""
+    if(result === true) {
 
-        for(let i = 0; i < filename.length; i++) {
-          if(filename[i] != "-") cedulaTemporal += filename[i];
-          else return { result: true, cedula: cedulaTemporal };
-        }
-
-      }
-
-      return cedula();
+      return { result : true, cedula : cedula };
 
     }else{
       return { result: false, cedula: "" };
