@@ -17,8 +17,8 @@ export const PersonalComparado = () => {
   let [ renderCounter, setRenderCounter ] = useState(0);
 
   useEffect(() => {
-    if(renderCounter === 1) GetUsers(false, cedula);
     setRenderCounter(renderCounter++);
+    if(renderCounter === 1) GetUsers(false, cedula);
 
     setTimeout(() => {
       window.location.href = "/";
@@ -30,7 +30,7 @@ export const PersonalComparado = () => {
 
     const dataUser = userCompared;
 
-    console.log("data user compared: ", dataUser)
+    console.log("data user compared: ", dataUser);
 
     // return;
 

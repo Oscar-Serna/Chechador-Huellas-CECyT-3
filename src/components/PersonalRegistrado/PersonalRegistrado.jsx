@@ -28,11 +28,12 @@ export const PersonalRegistrado = () => {
     return allUsers.map((persona, index) => (
       <CardPersonalRegistrado
         key={index}
-        id={index}
+        index={index}
+        id = {persona.id}
         nombre={persona.nombre}
         cedula={persona.cedula}
         rfc={persona.rfc}
-        t_personal={persona.puesto}
+        puesto={persona.puesto}
         num_huellas={persona.numHuellas}
       />
     ));

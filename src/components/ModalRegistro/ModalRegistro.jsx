@@ -17,6 +17,8 @@ export const ModalRegistro = ({ modalState, animationRegistro }) => {
   const [huellas, setHuellas] = useState(new Array(numeroHuellas).fill(false));
   const [reader, setReader] = useState(null);
 
+  const [ valueBtnTerminar, setValueBtnTerminar ] = useState("Terminar");
+
   // ESTADO DE LECTURA
   const [readerState, setReaderState] = useState(false);
 
@@ -184,6 +186,7 @@ export const ModalRegistro = ({ modalState, animationRegistro }) => {
   }
 
   function handleCreateUser() {
+
     const inputsModal = document.querySelectorAll(".inputs > input");
 
     const valueInputs = new Array(5).fill(null);
@@ -344,8 +347,9 @@ export const ModalRegistro = ({ modalState, animationRegistro }) => {
           />
           <input
             type="button"
-            value="Terminar"
+            value={valueBtnTerminar}
             onClick={() => {
+              setValueBtnTerminar("CREANDO, ESPERE...");
               handleCreateUser();
             }}
           />

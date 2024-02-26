@@ -5,6 +5,8 @@ import { PersonalRegistrado } from "../../components/PersonalRegistrado/Personal
 import { ModalRegistro } from "../../components/ModalRegistro/ModalRegistro";
 
 import { UsersContextProvider } from "../../context/users.context";
+import { ModalEditar } from "../../components/ModalEditar/ModalEditar";
+import { EditarContextProvider } from "../../context/editar.context";
 
 export const Registro = () => {
   const [modalRegistroState, setModalRegistroState] = useState("inactivo");
@@ -18,8 +20,14 @@ export const Registro = () => {
     <>
       <OpcionesRegistro animationRegistro={AnimationModalRegistro} />
       <UsersContextProvider>
-        <PersonalRegistrado />
-        <ModalRegistro modalState={modalRegistroState} animationRegistro={AnimationModalRegistro} />
+        <EditarContextProvider>
+          <PersonalRegistrado />
+          <ModalRegistro
+            modalState={modalRegistroState}
+            animationRegistro={AnimationModalRegistro}
+          />
+          <ModalEditar />
+        </EditarContextProvider>
       </UsersContextProvider>
     </>
   );

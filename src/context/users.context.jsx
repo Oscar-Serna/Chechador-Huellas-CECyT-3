@@ -1,10 +1,12 @@
 import React, { createContext, useState } from "react";
 
 import {
+  Services_Authentication,
   Services_CreateUser,
   Services_DeleteUser,
   Services_GetAllUsers,
   Services_GetUser,
+  Services_UpdateUser,
 } from "../services/users.services";
 
 export const UsersContext = createContext();
@@ -68,42 +70,83 @@ export const UsersContextProvider = ({ children }) => {
         huellasBase64,
       }).then(dataResponse => {
 
-        if (dataResponse === "CREADO")
-          return deleteLocalStorage(true);
+        if (dataResponse === "CREADO"){
+          deleteLocalStorage(true);
+          return dataResponse;
+        }
         if (dataResponse === "ERROR") {
           alert("Hubo un error al agregar el miembro");
-          deleteLocalStorage(true);
+          
+          // deleteLocalStorage(true);
         }
         if (dataResponse.saveInServer === "YA EXISTE") alert("Este usuario ya existe");
 
       });
     };
 
-    fetchCreateUser();
+    return fetchCreateUser();
   }
 
   function DeleteUser(cedula, nombre) {
-    const promptDelete = prompt(
-      `ELIMINAR PERSONAL\nIntroduzca la cédula de ${nombre} - ${cedula}:`
+    const password = prompt(
+      `¿Eliminar a ${cedula} | ${nombre}?\nIntroduzca la contraseña:`
     );
 
-    if (!promptDelete) return;
+    if (!password) return;
 
-    if (promptDelete != cedula.toString()) {
-      alert("Incorrecto... Vuelva a intentarlo");
-      DeleteUser(cedula, nombre);
-      return;
+
+    async function fetchAuthentication(){
+
+      await Services_Authentication(password.trim()).then(resultAuthentication => {
+
+        if(resultAuthentication === true){
+
+          async function fetcDeleteUser(){
+
+            await Services_DeleteUser(cedula).then((_) => {
+
+              GetUsers(true);
+
+            })
+
+          }
+
+          fetcDeleteUser();
+
+        }else return DeleteUser(cedula, nombre);
+
+      })
+
     }
 
-    const fetcDeleteUser = async () => {
-      const data = await Services_DeleteUser(cedula).then((_) => {
+    fetchAuthentication();
+
+  }
+
+  function UpdateUser(
+    nombre,
+    cedula,
+    cedulaOriginal,
+    rfc,
+    puesto,
+    turno
+  ) {
+
+    const fetchUpdate = async () => {
+
+      const result = await Services_UpdateUser(
+        { nombre, cedula, cedulaOriginal, rfc, puesto, turno }
+      ).then(result => {
+        console.log(result);
         GetUsers(true);
-      });
+        return result;
+      })
 
-      return data;
-    };
+      return result;
 
-    fetcDeleteUser();
+    }
+
+    return fetchUpdate();
   }
 
   return (
@@ -114,6 +157,7 @@ export const UsersContextProvider = ({ children }) => {
         GetUsers,
         CreateUser,
         DeleteUser,
+        UpdateUser
       }}
     >
       {children}

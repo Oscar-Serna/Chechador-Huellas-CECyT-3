@@ -32,9 +32,10 @@
   .cardPersonal .opciones{
     position: absolute;
     right: 1.25rem;
+    display: flex;
+    gap: 1rem;
   }
     .cardPersonal .opciones li{
-      background-color: darkred;
       color: #fff;
       padding: .5rem 1rem;
       border-radius: 5px;
@@ -42,7 +43,18 @@
       cursor: pointer;
       transition: 200ms ease;
     }
-    .cardPersonal .opciones li:hover{
+    .cardPersonal .opciones li.editar{
+      background-color: rgb(1, 80, 170);
+    }
+    .cardPersonal .opciones li.editar:hover{
+      color: rgb(1, 80, 170);
+    }
+    .cardPersonal .opciones li.eliminar{
+      background-color: darkred;
+    }
+    .cardPersonal .opciones li.eliminar:hover{
       color: darkred;
+    }
+    .cardPersonal .opciones li:hover{
       background-color: #fff;
     }

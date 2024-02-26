@@ -5,6 +5,9 @@
  * Copyright 2010-2014 Caolan McMahon
  * Released under the MIT license
  */
+import async from "async";
+import ES6Promise from "es6-promise";
+
 ;(function () {
 
   var async = {};
