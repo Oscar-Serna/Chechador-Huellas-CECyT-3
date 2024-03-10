@@ -7,7 +7,7 @@ export const Services_Authentication = async (password) => {
 
     const { data } = await axios.get(`${BASE_URL}/auth`, { headers : { AuthorizationKey : "un1d4d1nf0rm4t1c4c3cyt3", password : password } });
 
-    console.log(data)
+    // console.log(data)
 
     return data;
 
