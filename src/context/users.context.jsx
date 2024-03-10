@@ -12,7 +12,7 @@ import {
 export const UsersContext = createContext();
 
 export const UsersContextProvider = ({ children }) => {
-  const [allUsers, setAllUsers] = useState([]);
+  const [allUsers, setAllUsers] = useState([null]);
 
   const [userCompared, setUserCompared] = useState(null);
 
@@ -22,8 +22,6 @@ export const UsersContextProvider = ({ children }) => {
         const result = await Services_GetAllUsers();
 
         setAllUsers(result);
-
-        console.log("AllUsers", result);
 
         return result;
       };
@@ -36,8 +34,6 @@ export const UsersContextProvider = ({ children }) => {
 
       const fetchGetUsers = async () => {
         const result = await Services_GetUser(cedula);
-
-        console.log("RESULT DEL FETCH USER: ", result);
 
         setUserCompared(result);
 
@@ -76,8 +72,7 @@ export const UsersContextProvider = ({ children }) => {
         }
         if (dataResponse === "ERROR") {
           alert("Hubo un error al agregar el miembro");
-          
-          // deleteLocalStorage(true);
+          deleteLocalStorage(true);
         }
         if (dataResponse.saveInServer === "YA EXISTE") alert("Este usuario ya existe");
 
@@ -137,7 +132,6 @@ export const UsersContextProvider = ({ children }) => {
       const result = await Services_UpdateUser(
         { nombre, cedula, cedulaOriginal, rfc, puesto, turno }
       ).then(result => {
-        console.log(result);
         GetUsers(true);
         return result;
       })

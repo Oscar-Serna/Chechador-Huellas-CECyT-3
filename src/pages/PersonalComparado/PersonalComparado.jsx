@@ -30,10 +30,6 @@ export const PersonalComparado = () => {
 
     const dataUser = userCompared;
 
-    console.log("data user compared: ", dataUser);
-
-    // return;
-
     return dataUser.map((user, index) => (
       <CardPersonalComparado
         key={index}

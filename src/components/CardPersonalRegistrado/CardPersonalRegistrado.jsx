@@ -15,7 +15,7 @@ export const CardPersonalRegistrado = ({
   num_huellas,
 }) => {
 
-  const { DeleteUser, UpdateUser } = useContext(UsersContext);
+  const { DeleteUser } = useContext(UsersContext);
   const {
     setModalState,
     setIndexEmpleadoSeleccionado

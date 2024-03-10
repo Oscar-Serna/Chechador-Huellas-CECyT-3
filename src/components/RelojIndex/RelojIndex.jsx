@@ -56,11 +56,6 @@ export const RelojIndex = () => {
       <div className="horary">
         <h4>¡{getHorary()}!</h4>
       </div>
-      <div className="buttons">
-        <Link to={"/registro"}>
-          <input type="button" value="Soy nuevo, regístrame" />
-        </Link>
-      </div>
     </section>
   );
 };

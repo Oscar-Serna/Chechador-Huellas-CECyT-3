@@ -16,6 +16,7 @@ import { CompareContext } from "../../context/compare.context";
 import loadingGIF from "../../img/loadingGIF.gif";
 
 export const LectorIndex = () => {
+
   const { CompareUser, resultCompare, setResultCompare, compareCedula } =
     useContext(CompareContext);
 
@@ -35,8 +36,27 @@ export const LectorIndex = () => {
 
   const [ comparisionResult, setComparisionResult ] = useState("");
 
+  const [ deviceUID, setDeviceUID ] = useState(null);
+
   useEffect(() => {
-    setReader(new FingerprintReader());
+
+    async function getDeviceUID (){
+
+      await new FingerprintReader().enumerateDevices()
+      .then(result => {
+        setDeviceUID(result);
+      })
+      .finally(_ => {
+        setReader(new FingerprintReader());
+      })
+      .catch(error => {
+        console.log("Error al obtener el UID Device", error);
+      })
+
+    }
+
+    getDeviceUID();
+
   }, []);
 
   useEffect(() => {
@@ -99,6 +119,7 @@ export const LectorIndex = () => {
   useEffect(() => {
     if (resultCompare === true) {
       setNavigateTo(<Navigate to={`/personal/?cedula=${compareCedula}`} />);
+      // window.location.href = ""
       setResultCompare(null);
       setFetchState(false);
       setModalLoadingState("inactive");
@@ -127,7 +148,7 @@ export const LectorIndex = () => {
     reader
       .startAcquisition(
         SampleFormat.PngImage,
-        "44CB0200-2776-8548-94FE-F89DDB7A0BB4"
+        `${deviceUID}`
       )
       .then((_) => {
         setScanningState("Listo para escanear...");

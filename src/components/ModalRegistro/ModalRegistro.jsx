@@ -12,7 +12,7 @@ import { UsersContext } from "../../context/users.context";
 import { Navigate, useSearchParams } from "react-router-dom";
 
 export const ModalRegistro = ({ modalState, animationRegistro }) => {
-  const numeroHuellas = 1;
+  const numeroHuellas = 4;
 
   const [huellas, setHuellas] = useState(new Array(numeroHuellas).fill(false));
   const [reader, setReader] = useState(null);
@@ -44,18 +44,12 @@ export const ModalRegistro = ({ modalState, animationRegistro }) => {
   const turnoParam = searchParams.get("turno");
   const abrirModal = searchParams.get("modal");
 
-  // INICIALIZAMOS "reader" PARA DEFINIR EL OBJETO "FingerprintReader"
   useEffect(() => {
     setReader(new FingerprintReader());
-
-    // window.addEventListener("load", deleteLocalStorage);
-
-    // window.removeEventListener("DOMContentLoaded", deleteLocalStorage);
 
     if(abrirModal === "abierto") animationRegistro();
   }, []);
 
-  // INICIALIZAMOS LA ESCUCHA DE EVENTOS DEL LECTOR Y OBTENEMOS SU "UID" (CUANDO SE MODIFIQUE EL "reader")
   useEffect(() => {
     if (reader != null) {
       reader.on("DeviceConnected", onDeviceConnected);
@@ -70,7 +64,6 @@ export const ModalRegistro = ({ modalState, animationRegistro }) => {
     }
   }, [reader]);
 
-  // ESTADO DE CONEXIÓN
   function onDeviceConnected() {
     setReaderStatus(true);
   }
@@ -79,7 +72,6 @@ export const ModalRegistro = ({ modalState, animationRegistro }) => {
     setReaderStatus(false);
   }
 
-  // INICIO DE ADQUISICIÓN DE IMAGENES
   function onAcquisitionStarted() {
     if (scanningState === true) return;
 
@@ -105,7 +97,7 @@ export const ModalRegistro = ({ modalState, animationRegistro }) => {
     reader
       .startAcquisition(
         SampleFormat.PngImage,
-        "44CB0200-2776-8548-94FE-F89DDB7A0BB4"
+        `${deviceUID}`
       )
       .then((_) => {
         setReaderState(true);
@@ -115,7 +107,6 @@ export const ModalRegistro = ({ modalState, animationRegistro }) => {
       });
   }
 
-  // FIN DE ADQUISICION DE IMAGENES
   function onAcquisitionStopped() {
     setTimeout(() => {
       setScanningState("Registrar huellas dactilares");
@@ -132,7 +123,6 @@ export const ModalRegistro = ({ modalState, animationRegistro }) => {
     }
   }
 
-  // CUANDO SE OBTIENE UNA IMAGEN DEL LECTOR
   function onSamplesAcquired(e) {
     if (scanCounter > huellas.length - 1) return;
 
@@ -148,8 +138,6 @@ export const ModalRegistro = ({ modalState, animationRegistro }) => {
     setHuellas(newHuellas);
   }
 
-  // GUARDAR IMAGENES EN EL LS
-  // RAZÓN: (NO SE PUEDE GUARDAR EN REACT POR EL TAMAÑO DE LA IMAGEN) 250KB+ c/u
   function saveLocalStorage(textImage) {
     const huellasLS = JSON.parse(localStorage.getItem("huellas"));
 
@@ -168,15 +156,12 @@ export const ModalRegistro = ({ modalState, animationRegistro }) => {
     }
   }
 
-  // ELIMINAR LOCALSTORAGE
   function deleteLocalStorage(inicio) {
     localStorage.removeItem("huellas");
-    if(inicio === true) window.location.href = "/#/registro/"
+    if(inicio === true) return window.location.href = "/#/alta/"
     window.location.reload();
   }
 
-  // CORREGIR EL FORMATO DE LA IMAGEN
-  // RAZÓN: (CUANDO )
   function fixFingerprintImage(textImage) {
     let formatImage = textImage;
     formatImage = formatImage.replace(/_/g, "/");
@@ -239,7 +224,7 @@ export const ModalRegistro = ({ modalState, animationRegistro }) => {
     localStorage.removeItem("huellas");
     setNavigateTo(
       <Navigate
-        to={`/registro/?nombre=${nombre}&cedula=${cedula}&rfc=${rfc}&puesto=${puesto}&turno=${turno}&modal=abierto`}
+        to={`/alta/?nombre=${nombre}&cedula=${cedula}&rfc=${rfc}&puesto=${puesto}&turno=${turno}&modal=abierto`}
       />
     );
   }

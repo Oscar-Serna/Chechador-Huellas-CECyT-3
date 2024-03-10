@@ -1,0 +1,1856 @@
+INSERT INTO
+  C3HUELLASDB (
+    nombre,
+    cedula,
+    rfc,
+    puesto,
+    turno,
+    num_huellas,
+    data_huellas
+  )
+VALUES
+(
+    'RUGERIO ONOFRE BELEN',
+    '240122',
+    'RUOB880627',
+    'ADMINISTRATIVO',
+    'MATUTINO',
+    4,
+    NULL
+  ),
+(
+    'MEDRANO CALDERON YAHEKO SARAY',
+    '110308',
+    'MECY920229',
+    'ADMINISTRATIVO',
+    'MATUTINO',
+    4,
+    NULL
+  ),
+(
+    'DOMINGUEZ RAMOS LUIS ANGEL',
+    '130091',
+    'DORL830926',
+    'ADMINISTRATIVO',
+    'VESPERTINO',
+    4,
+    NULL
+  ),
+(
+    'GOMEZ GODINEZ RAQUEL GRISEL',
+    '121342',
+    'GOGR820902',
+    'DOCENTE',
+    'VESPERTINO',
+    4,
+    NULL
+  ),
+(
+    'HERNANDEZ FLORES MARIA ADRIANA',
+    '15393',
+    'HEFA680212',
+    'ADMINISTRATIVO',
+    'MATUNINO',
+    4,
+    NULL
+  ),
+(
+    'RODRIGUEZ PACHECO JOSE ERWIN',
+    '31087',
+    'ROPE710103',
+    'DOCENTE',
+    'MATUTINO',
+    4,
+    NULL
+  ),
+(
+    'HERRERA LOPEZ ERIK BENJAMIN',
+    '2100070',
+    'HELE821121',
+    'ADMINISTRATIVO',
+    'MATUTINO',
+    4,
+    NULL
+  ),
+(
+    'OLIVO BELIO JOSE ISRAEL',
+    '240282',
+    'OIBI701126',
+    'DOCENTE',
+    'MIXTO',
+    4,
+    NULL
+  ),
+(
+    'OLIVER ANAYA JAIR',
+    '25121',
+    'OIAJ760203',
+    'ADMINISTRATIVO',
+    'MATUTINO',
+    4,
+    NULL
+  ),
+(
+    'NAVA OLIVARES JOCELYN',
+    '2600382',
+    'NAOJ771224',
+    'ADMINISTRATIVO',
+    'MATUTINO',
+    4,
+    NULL
+  ),
+(
+    'CAMPOS ESTRADA GABRIELA',
+    '2081',
+    'CAEG781221',
+    'ADMINISTRATIVO',
+    'MATUTINO',
+    4,
+    NULL
+  ),
+(
+    'HERNANDEZ MARTINEZ PABLA',
+    '15839',
+    'HEMP670921',
+    'ADMINISTRATIVO',
+    'MATUTINO ',
+    4,
+    NULL
+  ),
+(
+    'LORENZANA RAMIREZ JUAN MANUEL ',
+    '111739',
+    'LORJ690327',
+    'DOCENTE',
+    'MATUTINO ',
+    4,
+    NULL
+  ),
+(
+    'GARCIA BARRIOS JUAN MANUEL ',
+    '11231',
+    'GABJ630131',
+    'ADMINISTRATIVO',
+    'MATUTINO ',
+    4,
+    NULL
+  ),
+(
+    'ZAMORA EVANGELISTA LETICIA',
+    '38063',
+    'ZAEL710101',
+    'ADMINISTRATIVO',
+    'MATUTINO ',
+    4,
+    NULL
+  ),
+(
+    'ESPINOSA VEGA JESSICA',
+    '2601245',
+    'EIVJ840107',
+    'ADMINISTRATIVO',
+    'MATUTINO',
+    4,
+    NULL
+  ),
+(
+    'LOPEZ GONZALEZ VALERIA VIRIDIANA',
+    '211564',
+    'LOGV820520',
+    'ADMINISTRATIVO',
+    'MATUTINO ',
+    4,
+    NULL
+  ),
+(
+    'SANTOS HERNANDEZ ZUGEILY GABRIELA',
+    '130216',
+    'SAHZ890509',
+    'ADMINISTRATIVO ',
+    'MATUTINO ',
+    4,
+    NULL
+  ),
+(
+    'ACEVES RODRIGUEZ CLAUDIA MARIANA',
+    '2601400',
+    'AERC850401',
+    'ADMINISTRATIVO ',
+    'MATUTINO ',
+    4,
+    NULL
+  ),
+(
+    'BAHENA DIAZ MARCELINO',
+    '2944',
+    'BADM510602',
+    'ADMINISTRATIVO ',
+    'MATUTINO ',
+    4,
+    NULL
+  ),
+(
+    'MEDINA LOPEZ CLAUDIA IVETH',
+    '190323',
+    'MELC861217',
+    'ADMINISTRATIVO',
+    'MATUTINO',
+    4,
+    NULL
+  ),
+(
+    'AVILA GONZALEZ JUAN MANUEL',
+    '2100072',
+    'AIGJ790219',
+    'ADMINISTRATIVO',
+    'MATUTINO',
+    4,
+    NULL
+  ),
+(
+    'ROSALES FLORES ADONAI BENJAMIN',
+    '9900332',
+    'ROFA741028',
+    'ADMINISTRATIVO',
+    'MATUTINO',
+    4,
+    NULL
+  ),
+(
+    'RODRIGUEZ SANCHEZ MANUEL',
+    '31450',
+    'ROCM451225',
+    'ADMINISTRATIVO',
+    'MATUTINO',
+    4,
+    NULL
+  ),
+(
+    'CABRERA HERNANDEZ LUIS',
+    '131125',
+    'CAHL700603',
+    'DOCENTE',
+    'MATUTINO',
+    4,
+    NULL
+  ),
+(
+    'MORENO SALAS JESUS ERNESTO',
+    '9601003',
+    'MOSJ711107',
+    'DOCENTE',
+    'MATUTINO',
+    4,
+    NULL
+  ),
+(
+    'CAÑEDO MAXIMO ANDRES',
+    '240326',
+    'CAMA940918',
+    'DOCENTE',
+    'VESPERTINO',
+    4,
+    NULL
+  ),
+(
+    'MORALES BAUTISTA MARIA CELIA',
+    '22681',
+    'MOBC741021',
+    'ADMINISTRATIVO',
+    'MATUTINO',
+    4,
+    NULL
+  ),
+(
+    'ORTEGA GARAY MIGUEL LAURENTINO',
+    '24883',
+    'OEGM621126',
+    'DOCENTE',
+    'VESPERTINO',
+    4,
+    NULL
+  ),
+(
+    'GARCIA AFENDULIS JOSE JUAN',
+    '11132',
+    'GAAJ640619',
+    'DOCENTE',
+    'VESPERTINO',
+    4,
+    NULL
+  ),
+(
+    'GRANADOS JIMENEZ MARIA EUGENIA',
+    '9800710',
+    'GAJE750703',
+    'ADMINISTRATIVO',
+    'MATUTINO',
+    4,
+    NULL
+  ),
+(
+    'GALLEGOS TORRES JULIO ALBERTO',
+    '9701047',
+    'GATJ740907',
+    'ADMINISTRATIVO',
+    'MATUTINO',
+    4,
+    NULL
+  ),
+(
+    'BRUGADA MATEO BRIZEIDA',
+    '2301441',
+    'BUMB770808',
+    'DOCENTE',
+    'MATUTINO',
+    4,
+    NULL
+  ),
+(
+    'GARCIA CRUZ XOCHITL MINERVA',
+    '11445',
+    'GACX740227',
+    'DOCENTE',
+    'MATUTINO',
+    4,
+    NULL
+  ),
+(
+    'GORDILLO RODRIGUEZ JOSE LUIS',
+    '2600741',
+    'GORL670515',
+    'ADMINISTRATIVO',
+    'VESPERTINO',
+    4,
+    NULL
+  ),
+(
+    'SUAREZ MEDINA CLAUDIA GABRIELA',
+    '101868',
+    'SUMC730324',
+    'DOCENTE',
+    'VESPERTINO',
+    4,
+    NULL
+  ),
+(
+    'VAZQUEZ BOBADILLA MIGUEL ANGEL',
+    '2200957',
+    'VABM700509',
+    'DOCENTE',
+    'VESPERTINO',
+    4,
+    NULL
+  ),
+(
+    'VILLANUEVA RUIZ CARMELO',
+    '37735',
+    'VIRC600318',
+    'DOCENTE',
+    'VESPERTINO',
+    4,
+    NULL
+  ),
+(
+    'VEGA DURAN MARIA DEL CARMEN',
+    '9901634',
+    'VEDC650715',
+    'ADMINISTRATIVO',
+    'MATUTINO',
+    4,
+    NULL
+  ),
+(
+    'PEREZ BLANQUET CARMEN',
+    '26564',
+    'PEBC590701',
+    'DOCENTE',
+    'MATUTINO',
+    4,
+    NULL
+  ),
+(
+    'ESPINO VILLAGRAN JUANA PATRICIA',
+    '2200960',
+    'EIVJ680808',
+    'DOCENTE',
+    'MATUTINO',
+    4,
+    NULL
+  ),
+(
+    'MANCILLA SALINAS GERMAN',
+    '9900544',
+    'MASG631023',
+    'DOCENTE',
+    'MATUTINO',
+    4,
+    NULL
+  ),
+(
+    'ZALDIVAR MALDONADO VICTOR MANUEL',
+    '111660',
+    'ZAMV610904',
+    'DOCENTE',
+    'VESPERTINO',
+    4,
+    NULL
+  ),
+(
+    'ROMERO DE LA ROSA CYNTHIA EDITH',
+    '190373',
+    'RORC960828',
+    'ADMINISTRATIVA',
+    'MATUTINO',
+    4,
+    NULL
+  ),
+(
+    'MONTERROSAS MORALES LIDIA ROSA',
+    '120864',
+    'MOML610803',
+    'ADMINISTRATIVA',
+    'VESPERTINO',
+    4,
+    NULL
+  ),
+(
+    'PEREZ ESCAMILLA LOURDES',
+    '2101213',
+    'PEEL480711',
+    'DOCENTE',
+    'VESPERTINO',
+    4,
+    NULL
+  ),
+(
+    'LOPEZ FLORES EDILBERTO CARLOS',
+    '110005',
+    'LOFE810224',
+    'DOCENTE',
+    'VESPERTINO',
+    4,
+    NULL
+  ),
+(
+    'SOTO DOTOR LUIS GERARDO',
+    '101775',
+    'SODL730924',
+    'DOCENTE',
+    'VESPERTINO',
+    4,
+    NULL
+  ),
+(
+    'ESCOBEDO GAMEZ YOLANDA',
+    '9734',
+    'EOGY671227',
+    'ADMINISTRATIVA',
+    'MATUTINO',
+    4,
+    NULL
+  ),
+(
+    'GASCA CASTILLO HILDA AIRAM',
+    '210999',
+    'GACH800908',
+    'DOCENTE',
+    'VESPERTINO',
+    4,
+    NULL
+  ),
+(
+    'VELAZQUEZ DELGADO GEMMA',
+    '2800764',
+    'VEDG880623',
+    'ADMINISTRATIVA',
+    'MATUTINO',
+    4,
+    NULL
+  ),
+(
+    'SANCHEZ BARRAGAN NORMA',
+    '32193',
+    'SABN621118',
+    'ADMINISTRATIVA',
+    'VESPERTINO',
+    4,
+    NULL
+  ),
+(
+    'CAMPOS ESTRADA GUADALUPE',
+    '4829',
+    'CAEG711201',
+    'ADMINISTRATIVA',
+    'MATUTINO',
+    4,
+    NULL
+  ),
+(
+    'MENDOZA GALLEGOS DAMARIS',
+    '211203',
+    'MEGD950109',
+    'ADMINISTRATIVA',
+    'MATUTINO',
+    4,
+    NULL
+  ),
+(
+    'CORTES PALACIOS MAUREN',
+    '7505',
+    'COPM671116',
+    'ADMINISTRATIVA',
+    'VESPERTINO',
+    4,
+    NULL
+  ),
+(
+    'MEDINA BASURTO ALICIA',
+    '121153',
+    'MEBA710203',
+    'DOCENTE',
+    'VESPERTINO',
+    4,
+    NULL
+  ),
+(
+    'BAUTISTA GRANADOS RICARDO',
+    '2800762',
+    'BAGR800106',
+    'ADMINISTRATIVO',
+    'MATUTINO',
+    4,
+    NULL
+  ),
+(
+    'GARCIA ALVAREZ BENJAMIN',
+    '11064',
+    'GAAB710331',
+    'ADMINISTRATIVO',
+    'VESPERTINO',
+    4,
+    NULL
+  ),
+(
+    'ALCANTARA ARCIGA MARLON IVAN',
+    '130385',
+    'AAAM830722',
+    'ADMINISTRATIVO',
+    'VESPERTINO',
+    4,
+    NULL
+  ),
+(
+    'BARRAZA LOPEZ RAUL',
+    '211278',
+    'BALR721125',
+    'ADMINISTRATIVO',
+    'VESPERTINO',
+    4,
+    NULL
+  ),
+(
+    'GUTIERREZ GARCIA SILVIA FLOR',
+    '160433',
+    'GUGS770706',
+    'ADMINISTRATIVA',
+    'MATUTINO',
+    4,
+    NULL
+  ),
+(
+    'BAUTISTA ANTONIO MISAEL',
+    '101723',
+    'BAAM840706',
+    'DOCENTE',
+    'MATUTINO',
+    4,
+    NULL
+  ),
+(
+    'CRUZ PALMA EDMUNDO',
+    '2301103',
+    'CUPE770604',
+    'DOCENTE',
+    'MATUTINO',
+    4,
+    NULL
+  ),
+(
+    'IBARRA MACIAS ELBA PATRICIA',
+    '190287',
+    'IAME870706',
+    'ADMINISTRATIVO',
+    'VESPERTINO',
+    4,
+    NULL
+  ),
+(
+    'MONTAÑO ALVAREZ MARIA ISABEL',
+    '211638',
+    'MOAI980926',
+    'ADMINISTRATIVO',
+    'VESPERTINO',
+    4,
+    NULL
+  ),
+(
+    'ESTRADA GARCIA MARIBEL',
+    '9130',
+    'EAGM720720',
+    'ADMINISTRATIVO',
+    'VESPERTINO',
+    4,
+    NULL
+  ),
+(
+    'FLORES CERVANTES CLAUDIA',
+    '2601372',
+    'FOCC730530',
+    'DOCENTE',
+    'VESPERTINO',
+    4,
+    NULL
+  ),
+(
+    'PEREZ LOPEZ JORGE CESAR',
+    '2901699',
+    'PELJ760104',
+    'DOCENTE',
+    'VESPERTINO',
+    4,
+    NULL
+  ),
+(
+    'GARCIA HERNANDEZ NORMA ANGELICA',
+    '130491',
+    'GAHN680209',
+    'DOCENTE',
+    'VESPERTINO',
+    4,
+    NULL
+  ),
+(
+    'ESTRELLA CONDE PABLO INDALECIO',
+    '2500703',
+    'EECP710701',
+    'DOCENTE',
+    'VESPERTINO',
+    4,
+    NULL
+  ),
+(
+    'RIVERA BAZAN MARCO IVAN',
+    '220871',
+    'RIBM900128',
+    'DOCENTE',
+    'VESPERTINO',
+    4,
+    NULL
+  ),
+(
+    'PRIETO NAVARRO BLANCA SHIRLEY',
+    '9801599',
+    'PINB760531',
+    'ADMINISTRATIVO',
+    'MATUTINO',
+    4,
+    NULL
+  ),
+(
+    'MONTES ESTRADA SEBEK',
+    '2500535',
+    'MOES790427',
+    'ADMINISTRATIVO',
+    'MATUTINO',
+    4,
+    NULL
+  ),
+(
+    'PANO DIAZ JARUMI LIZZETTE',
+    '110937',
+    'PADJ810127',
+    'DOCENTE',
+    'MATUTINO',
+    4,
+    NULL
+  ),
+(
+    'GARCIA URBINA MARIA TERESA',
+    '2600572',
+    'GAUT821117',
+    'ADMINISTRATIVO',
+    'VESPERTINO',
+    4,
+    NULL
+  ),
+(
+    'GARCIA MUÑOZ MONICA ALEJANDRA',
+    '2900043',
+    'GAMM890930',
+    'ADMINISTRATIVO',
+    'VESPERTINO',
+    4,
+    NULL
+  ),
+(
+    'PUGA CORONA HECTOR',
+    '240110',
+    'PUCH040801',
+    'ADMINISTRATIVO',
+    'VESPERTINO',
+    4,
+    NULL
+  ),
+(
+    'CRUZ RODRIGUEZ GUILLERMO',
+    '110472',
+    'CURG680612',
+    'ADMINISTRATIVO',
+    'VESPERTINO',
+    4,
+    NULL
+  ),
+(
+    'GARCIA MORENO GERARDO',
+    '120940',
+    'GAMG710811',
+    'DOCENTE',
+    'VESPERTINO',
+    4,
+    NULL
+  ),
+(
+    'RAMIREZ GARCIA ARMANDO',
+    '2501795',
+    'RAGA700826',
+    'DOCENTE',
+    'VESPERTINO',
+    4,
+    NULL
+  ),
+(
+    'HERNANDEZ JAIME RAFAEL',
+    '2700395',
+    'HEJR770310',
+    'DOCENTE',
+    'VESPERTINO',
+    4,
+    NULL
+  ),
+(
+    'JIMENEZ ROMERO INGRID VIRGINIA',
+    '2600380',
+    'JIRI830609',
+    'ADMINISTRATIVO',
+    'VERPERTINO',
+    4,
+    NULL
+  ),
+(
+    'VALVERDE BARCENAS IVANNA IVETH SHARDEI',
+    '190407',
+    'VABI980215',
+    'ADMINISTRATIVO',
+    'VESPERTINO',
+    4,
+    NULL
+  ),
+(
+    'MORALES CAMARILLO JUAN ALBERTO',
+    '9600807',
+    'MOCJ740619',
+    'ADMINISTRATIVO',
+    'MATUTINO',
+    4,
+    NULL
+  ),
+(
+    'MENDEZ PLATAS JUANA MIRIAM',
+    '9801169',
+    'MEPJ750110',
+    'ADMINISTRATIVO',
+    'VESPERTINO',
+    4,
+    NULL
+  ),
+(
+    'PONCE VIAN JOHANA ELIZABETH',
+    '2301053',
+    'POVJ830624',
+    'ADMINISTRATIVO',
+    'VESPERTINO',
+    4,
+    NULL
+  ),
+(
+    'PEREZ ALVAREZ LUIS ENRIQUE',
+    '101096',
+    'PEAL700515',
+    'DOCENTE',
+    'VESPERTINO',
+    4,
+    NULL
+  ),
+(
+    'SUAREZ BARRERA JOSE ANTONIO',
+    '2700421',
+    'SUBA601030',
+    'DOCENTE',
+    'VESPERTINO',
+    4,
+    NULL
+  ),
+(
+    'YAHUACA DIAZ MARIO CHRISTOPHER',
+    '100119',
+    'YADM820119',
+    'DOCENTE',
+    'VESPERTINO',
+    4,
+    NULL
+  ),
+(
+    'DORADO MORALES ROLANDO',
+    '9901211',
+    'DOMR780617',
+    'ADMINISTRATIVO',
+    'VASPERTINO',
+    4,
+    NULL
+  ),
+(
+    'CALLEJAS MAYO HECTOR',
+    '2601626',
+    'CAMH740716',
+    'ADMINISTRATIVO',
+    'VESPERTINO',
+    4,
+    NULL
+  ),
+(
+    'FRAGOSO RODRIGUEZ CARLOS ARGEL',
+    '120334',
+    'FARC890527',
+    'ADMINISTRATIVO',
+    'MATUTINO',
+    4,
+    NULL
+  ),
+(
+    'URIBE CHAVARRIA ALICIA GUADALUPE',
+    '9800703',
+    'UICA690623',
+    'DOCENTE',
+    'VESPERTINO',
+    4,
+    NULL
+  ),
+(
+    'PEREZ TELLEZ YAZMIN REBECA',
+    '2700875',
+    'PETY830510',
+    'DOCENTE',
+    'VESPERTINO',
+    4,
+    NULL
+  ),
+(
+    'VALENCIA PACHECO JOSE ESTEBAN',
+    '130466',
+    'VAPE681128',
+    'DOCENTE',
+    'VESPERTINO',
+    4,
+    NULL
+  ),
+(
+    'AGUILAR PATLAN FERNANDO',
+    '2200692',
+    'AUPF520810',
+    'ADMINISTRATIVO',
+    'VESPERTINO',
+    4,
+    NULL
+  ),
+(
+    'SANCHEZ RODRIGUEZ MARTIN JAVIER',
+    '33309',
+    'SARM640729',
+    'DOCENTE',
+    'VESPERTINO',
+    4,
+    NULL
+  ),
+(
+    'ORTIZ ANAYA ALEJANDRA',
+    '25109',
+    'OIAA741014',
+    'ADMINISTRATIVO',
+    'VESPERTINO',
+    4,
+    NULL
+  ),
+(
+    'HERNANDEZ GUTIERREZ MIGUEL ANGEL',
+    '2700924',
+    'HEGM740327',
+    'DOCENTE',
+    'VESPERTINO',
+    4,
+    NULL
+  ),
+(
+    'VEGA MORENO IRAI YAZMIN',
+    '130636',
+    'VEMI830926',
+    'DOCENTE',
+    'VESPERTINO',
+    4,
+    NULL
+  ),
+(
+    'SUAREZ SANCHEZ JUAN CARLOS',
+    '120834',
+    'SUSJ811017',
+    'DOCENTE',
+    'VESPERTINO',
+    4,
+    NULL
+  ),
+(
+    'JUAREZ ORTEGA JOSE MARIANO',
+    '130131',
+    'JUOM890117',
+    'ADMINISTRATIVO',
+    'VESPERTINO',
+    4,
+    NULL
+  ),
+(
+    'CASTELLANOS PIÑON ANTONIO',
+    '220862',
+    'CAPA920511',
+    'DOCENTE',
+    'VESPERTINO',
+    4,
+    NULL
+  ),
+(
+    'MARQUEZ CALZADA FILIBERTO',
+    '131038',
+    'MACF780227',
+    'DOCENTE',
+    'VESPERTINO',
+    4,
+    NULL
+  ),
+(
+    'CAMACHO DIAZ JESUS FRANCISCO',
+    '211636',
+    'CADJ790430',
+    'ADMINISTRATIVO',
+    'VESPERTINO',
+    4,
+    NULL
+  ),
+(
+    'HERNANDEZ BELLO JOSE PEDRO',
+    '15178',
+    'HEBP541116',
+    'DOCENTE',
+    'VESPERTINO',
+    4,
+    NULL
+  ),
+(
+    'RAMIREZ ALVARADO DORA LUZ',
+    '170492',
+    'RAAD830404',
+    'ADMINISTRATIVO',
+    'VESPERTINO',
+    4,
+    NULL
+  ),
+(
+    'ARRIETA PEREZ CARLOS',
+    '2600744',
+    'AIPC690409',
+    'DOCENTE',
+    'MATUTINO',
+    4,
+    NULL
+  ),
+(
+    'GUZMAN RAMOS LEOPOLDO DAVID ',
+    '111234',
+    'GURL691115',
+    'DOCENTE',
+    'MATUTINO',
+    4,
+    NULL
+  ),
+(
+    'MATAMOROS LOPEZ MARIA DE LOURDES',
+    '9800812',
+    'MALL670512',
+    'DOCENTE',
+    'MATUTINO',
+    4,
+    NULL
+  ),
+(
+    'ALCUDIA MONTUOSO YOLOXOCHITL',
+    '2501791',
+    'AUMY790226',
+    'DOCENTE',
+    'MATUTINO',
+    4,
+    NULL
+  ),
+(
+    'SANCHEZ CASTRO IVETTE',
+    '9701151',
+    'SACI780618',
+    'ADMINISTRATIVO',
+    'MATUTINO',
+    4,
+    NULL
+  ),
+(
+    'GOMEZ HURTADO ALEIDA',
+    '2101341',
+    'GOHA750516',
+    'DOCENTE',
+    'MATUTINO',
+    4,
+    NULL
+  ),
+(
+    'NAJERA MOLINA ANGELICA',
+    '9700137',
+    'NAMA741128',
+    'ADMINISTRATIVO',
+    'MATUTINO',
+    4,
+    NULL
+  ),
+(
+    'ORDUÑA CRUZ BRENDA',
+    '25792',
+    'OUCB720714',
+    'ADMINISTRATIVO',
+    'MATUTINO',
+    4,
+    NULL
+  ),
+(
+    'PONCE FLORES BEATRIZ',
+    '27733',
+    'POFB591227',
+    'DOCENTE',
+    'MATUTINO ',
+    4,
+    NULL
+  ),
+(
+    'RODRIGUEZ GRANADOS ROCIO',
+    '2301445',
+    'ROGR610904',
+    'DOCENTE',
+    'MATUTINO',
+    4,
+    NULL
+  ),
+(
+    'VILLAR KERLEGAND HURI',
+    '9602023',
+    'VIKH730207',
+    'ADMINISTRATIVO',
+    'MATUTINO',
+    4,
+    NULL
+  ),
+(
+    'LOPEZ VEGA ILSE JOANNA',
+    '2900790',
+    'LOVI860920',
+    'ADMINISTRATIVO',
+    'MATUTINO',
+    4,
+    NULL
+  ),
+(
+    'SAUZA PEREZ MARIA MARCELINA',
+    '33157',
+    'SAPM700426',
+    'ADMINISTRATIVO',
+    'MATUTINO',
+    4,
+    NULL
+  ),
+(
+    'REYES CHAVEZ MARIA MAGDALENA ',
+    '29061',
+    'RECM760423',
+    'ADMINISTRATIVO',
+    'MATUTINO',
+    4,
+    NULL
+  ),
+(
+    'QUEVEDO BADILLO NAYALI VERONICA',
+    '2700927',
+    'QUBN730619',
+    'DOCENTE',
+    'MATUTINO',
+    4,
+    NULL
+  ),
+(
+    'CHAVERO RESENDIZ JOSE LUIS',
+    '2800011',
+    'CARL770512',
+    'DOCENTE',
+    'MATUTINO',
+    4,
+    NULL
+  ),
+(
+    'ANAYA PEREZ ANA BERTHA',
+    '110305',
+    'AAPA850305',
+    'ADMINISTRATIVO',
+    'MATUTINO',
+    4,
+    NULL
+  ),
+(
+    'LOPEZ GARCIA GUILLERMO',
+    '101789',
+    'LOGG790721',
+    'DOCENTE',
+    'MATUTINO',
+    4,
+    NULL
+  ),
+(
+    'GARCIA REYES ARIADNA MIREYA',
+    '140346',
+    'GARA720917',
+    'DOCENTE',
+    'MATUTINO',
+    4,
+    NULL
+  ),
+(
+    'HERNANDEZ MANRIQUE HILDA',
+    '2700738',
+    'HEMH721227',
+    'DOCENTE',
+    'VESPERTINO',
+    4,
+    NULL
+  ),
+(
+    'CARRANZA SERRANO GUILLERMINA',
+    '9900538',
+    'CASG670910',
+    'DOCENTE',
+    'MATUTINO',
+    4,
+    NULL
+  ),
+(
+    'ORTA SALINAS ENRIQUE',
+    '2100531',
+    'OASE681111',
+    'DOCENTE',
+    'VESPERTINO',
+    4,
+    NULL
+  ),
+(
+    'CASTILLEJOS JIMENEZ HECTOR',
+    '5321',
+    'CAJH450524',
+    'DOCENTE',
+    'VESPERTINO',
+    4,
+    NULL
+  ),
+(
+    'GUTIERREZ CASTILLO LAURA IDALID',
+    '2701267',
+    'GUCL781027',
+    'ADMINISTRATIVA',
+    'MATUTINO',
+    4,
+    NULL
+  ),
+(
+    'VEGA VEGA SANDRA',
+    '9901459',
+    'VEVS810624',
+    'ADMINISTRATIVA',
+    'MATUTINO',
+    4,
+    NULL
+  ),
+(
+    'SANDOVAL TRASVIÑA NAXHIELY WENDOLINE',
+    '33540',
+    'SATN750716',
+    'DOCENTE',
+    'MATUTINO',
+    4,
+    NULL
+  ),
+(
+    'RUIZ MARTINEZ BRENDA',
+    '120764',
+    'RUMB800522',
+    'DOCENTE',
+    'MATUTINO',
+    4,
+    NULL
+  ),
+(
+    'CAMPA LUVIANO INDIRA',
+    '2300191',
+    'CALI781011',
+    'DOCENTE',
+    'MATUTINO',
+    4,
+    NULL
+  ),
+(
+    'HERNANDEZ ORTEGA HUMBERTO',
+    '2400447',
+    'HEOH720506',
+    'DOCENTE',
+    'MATUTINO',
+    4,
+    NULL
+  ),
+(
+    'AYLLON CORDOVA FERNANDO',
+    '2901744',
+    'AOCF630715',
+    'DOCENTE',
+    'MATUTINO',
+    4,
+    NULL
+  ),
+(
+    'OLMEDO CRUZ MARIA ERIKA',
+    '2400876',
+    'OECE750108',
+    'DOCENTE',
+    'MATUTINO',
+    4,
+    NULL
+  ),
+(
+    'RIOS PINEDA EDITH',
+    '9700983',
+    'RIPE761021',
+    'ADMINISTRATIVO',
+    'MATUTINO',
+    4,
+    NULL
+  ),
+(
+    'HERNANDEZ MOEDANO FRANCISCO JAVIER',
+    '130800',
+    'HEMF861213',
+    'ADMINISTRATIVO',
+    'MATUTINO',
+    4,
+    NULL
+  ),
+(
+    'CRUCES VALENCIA PAULINA ITHALY',
+    '2801477',
+    'CUVP900402',
+    'DOCENTE',
+    'MATUTINO',
+    4,
+    NULL
+  ),
+(
+    'ZAMORA CERVANTES DIANA ELENA',
+    '9901508',
+    'ZACD750928',
+    'DOCENTE',
+    'MATUTINO',
+    4,
+    NULL
+  ),
+(
+    'BARBERENA MALDONADO ANTONIO',
+    '9500333',
+    'BAMA640511',
+    'DOCENTE',
+    'MATUTINO',
+    4,
+    NULL
+  ),
+(
+    'PRIETO MACIAS ISABEL CRISTINA ',
+    '27567',
+    'PIMI710228',
+    'DOCENTE',
+    'MATUTINO',
+    4,
+    NULL
+  ),
+(
+    'RIVERA AGUILAR LUCIA',
+    '102030',
+    'RIAL720812',
+    'DOCENTE',
+    'VESPERTINO',
+    4,
+    NULL
+  ),
+(
+    'DEL RIO BARROSO MARIO SALVADOR',
+    '240117',
+    'RIBM960403',
+    'ADMINISTRATIVO',
+    'VESPERTINO',
+    4,
+    NULL
+  ),
+(
+    'COLUNGA AVENDAÑO MISSAEL',
+    '240052',
+    'COAM960224',
+    'ADMINISTRATIVO',
+    'VESPERTINO',
+    4,
+    NULL
+  ),
+(
+    'CARRANZA SERRANO MARISELA',
+    '2700766',
+    'CASM690906',
+    'DOCENTE',
+    'MATUTINO',
+    4,
+    NULL
+  ),
+(
+    'POLANCO CAMARGO BRENDA PATRICIA',
+    '170409',
+    'POCB900813',
+    'ADMINISTRATIVO',
+    'MATUTINO',
+    4,
+    NULL
+  ),
+(
+    'SANCHEZ BARRAGAN MARIA CONCEPCION',
+    '32157',
+    'SABC700502',
+    'ADMINISTRATIVO',
+    'MATUTINO',
+    4,
+    NULL
+  ),
+(
+    'COLUNGA MONTES MIGUEL ANGEL',
+    '7422',
+    'COMM670217',
+    'ADMINISTRATIVO',
+    'MATUTINO',
+    4,
+    NULL
+  ),
+(
+    'CAMPOS HERNANDEZ GERARDO',
+    '2200298',
+    'CAHG751003',
+    'DOCENTE',
+    'VESPERTINO',
+    4,
+    NULL
+  ),
+(
+    'LOPEZ RICO FRANCISCO JAVIER',
+    '2201143',
+    'LORF690808',
+    'DOCENTE',
+    'VESPERTINO',
+    4,
+    NULL
+  ),
+(
+    'ALVARADO SANCHEZ MARIA ANTONIETA',
+    '9700839',
+    'AASA651127',
+    'ADMINISTRATIVA',
+    'VESPERTINO',
+    4,
+    NULL
+  ),
+(
+    'CARRAZCO MARTINEZ JESUS',
+    '5622',
+    'CAMJ670410',
+    'ADMINISTRATIVO',
+    'VESPERTINO',
+    4,
+    NULL
+  ),
+(
+    'JUAREZ VAZQUEZ ROSA MARIA',
+    '111857',
+    'JUVR840824',
+    'DOCENTE ',
+    'VESPERTINO',
+    4,
+    NULL
+  ),
+(
+    'LOPEZ CHAVEZ SOLEDAD MIRIAM',
+    '130629',
+    'LOCS781218',
+    'DOCENTE',
+    'VESPERTINO',
+    4,
+    NULL
+  ),
+(
+    'SALAS TELLEZ CARLOS ISMAEL',
+    '2300551',
+    'CATC510617',
+    'DOCENTE',
+    'VESPERTINO',
+    4,
+    NULL
+  ),
+(
+    'ROMAN ACEVEDO ARTURO',
+    '2800013',
+    'ROAA750315',
+    'DOCENTE',
+    'VESPERTINO',
+    4,
+    NULL
+  ),
+(
+    'OROZCO MAGALLON EDUARDO',
+    '2500616',
+    'OOME720307',
+    'DOCENTE',
+    'VESPERTINO',
+    4,
+    NULL
+  ),
+(
+    'RAMIREZ VALDEZ SUELEN',
+    '130456',
+    'RAVS820618',
+    'ADMINISTRATIVO',
+    'VESPERTINO',
+    4,
+    NULL
+  ),
+(
+    'SANTIBAÑEZ DE LA TORRE DIANA ',
+    '220603',
+    'SATD760107',
+    'ADMINISTRATIVO',
+    'VESPERTINO',
+    4,
+    NULL
+  ),
+(
+    'CORONA CHAVEZ ROSALINDA',
+    '120123',
+    'COCR910210',
+    'ADMINISTRATIVO',
+    'VESPERTINO',
+    4,
+    NULL
+  ),
+(
+    'HERNANDEZ ESTRADA BENITO',
+    '2200109',
+    'HEEB740514',
+    'DOCENTE',
+    'VESPERTINO',
+    4,
+    NULL
+  ),
+(
+    'AVILA ONOFRE OLIVIA',
+    '111879',
+    'AIOO680212',
+    'DOCENTE',
+    'VESPERTINO',
+    4,
+    NULL
+  ),
+(
+    'VILLA GONZALEZ VICTOR DANIEL',
+    '9801280',
+    'VIGV710513',
+    'ADMINISTRATIVO',
+    'VESPERTINO',
+    4,
+    NULL
+  ),
+(
+    'MONTERRUBIO GUADARRAMA TANIA',
+    '190327',
+    'MOGT940322',
+    'ADMINISTRATIVO',
+    'VESPERTINO',
+    4,
+    NULL
+  ),
+(
+    'SOTO AYALA BERNARDO',
+    '54100',
+    'SOAB690720',
+    'ADMINISTRATIVO',
+    'VESPERTINO',
+    4,
+    NULL
+  ),
+(
+    'REYES ALVARADO MAURICIO',
+    '120415',
+    'REAM710301',
+    'ADMINISTRATIVO',
+    'VESPERTINO',
+    4,
+    NULL
+  ),
+(
+    'HERRERA MARTINEZ ARMANDO',
+    '2201103',
+    'HEMA770103',
+    'DOCENTE',
+    'VESPERTINO',
+    4,
+    NULL
+  ),
+(
+    'HERNANDEZ MUÑOZ MARINA',
+    '15830',
+    'HEMM591226',
+    'DOCENTE',
+    'VESPERTINO',
+    4,
+    NULL
+  ),
+(
+    'SANCHEZ HERNANDEZ KAREN ITZEL',
+    '220873',
+    'SAHK931026',
+    'DOCENTE',
+    'VESPERTINO',
+    4,
+    NULL
+  ),
+(
+    'CASTILLO PARRA SANDRA',
+    '190210',
+    'CAPS790607',
+    'ADMINISTRATIVO',
+    'VESPERTINO',
+    4,
+    NULL
+  ),
+(
+    'DIAZ HERNANDEZ SARA',
+    '9900679',
+    'DIHS631230',
+    'DOCENTE',
+    'VESPERTINO',
+    4,
+    NULL
+  ),
+(
+    'RODRIGUEZ VAZQUEZ PABLO',
+    '190375',
+    'ROVP790425',
+    'ADMINISTRATIVO',
+    'VESPERTINO',
+    4,
+    NULL
+  ),
+(
+    'GARCIA VARGAS PHIL LEONEL',
+    '110149',
+    'GAVP840611',
+    'ADMINISTRATIVO',
+    'VESPERTINO',
+    4,
+    NULL
+  ),
+(
+    'REYES PEREZ EDUARDO',
+    '2800278',
+    'REPE840217',
+    'DOCENTE',
+    'VESPERTINO',
+    4,
+    NULL
+  ),
+(
+    'NUÑEZ RODRIGUEZ ENRIQUE',
+    '101086',
+    'NURE641128',
+    'DOCENTE',
+    'VESPERTINO',
+    4,
+    NULL
+  ),
+(
+    'AGUILAR BELTRAN JOSE VALENTIN',
+    '120910',
+    'AUBV590924',
+    'DOCENTE',
+    'VESPERTINO',
+    4,
+    NULL
+  ),
+(
+    'ALCANTARA DELGADO JOSEFINA MARIA DE JESUS',
+    '265',
+    'AADJ610602',
+    'DOCENTE',
+    'VESPERTINO',
+    4,
+    NULL
+  ),
+(
+    'OJEDA RIVERA JAIME',
+    '25030',
+    'OERJ590421',
+    'DOCENTE',
+    'VESPERTINO',
+    4,
+    NULL
+  ),
+(
+    'TRISTAN CALLEJA ABEL ISRAEL',
+    '2101371',
+    'TICA760928',
+    'DOCENTE',
+    'VESPERTINO',
+    4,
+    NULL
+  ),
+(
+    'HERRERA CERVANTES JACOBINA',
+    '15270',
+    'HECJ561128',
+    'DOCENTE',
+    'VESPERTINO',
+    4,
+    NULL
+  ),
+(
+    'VELAZQUEZ TORRES PABLO',
+    '37279',
+    'VETP670629',
+    'DOCENTE',
+    'VESPERTINO',
+    4,
+    NULL
+  ),
+(
+    'AYALA ALVAREZJOSE BENJAMIN',
+    '2300574',
+    'AAAB620712',
+    'DOCENTE',
+    'VESPERTINO',
+    4,
+    NULL
+  ),
+(
+    'SIERRA ESCUDERO JUDITH',
+    '9600342',
+    'SIEJ690728',
+    'ADMINISTRATIVO',
+    'MATUTINO',
+    4,
+    NULL
+  ),
+(
+    'CHAVEZ CRUZ SERGIO',
+    '2901457',
+    'CACS840629',
+    'DOCENTE',
+    'VESPERTINO',
+    4,
+    NULL
+  ),
+(
+    'BECERRIL PUENTE KAREN ANELL',
+    '211248',
+    'BEPK940120',
+    'DOCENTE',
+    'VESPERTINO',
+    4,
+    NULL
+  ),
+(
+    'MONROY CONTRERAS RICARDO DAVID',
+    '2900962',
+    'MOCR820411',
+    'DOCENTE',
+    'VESPERTINO',
+    4,
+    NULL
+  ),
+(
+    'ESPINO VALLE MARIANA',
+    '130555',
+    'EIVM851101',
+    'DOCENTE',
+    'VESPERTINO',
+    4,
+    NULL
+  ),
+(
+    'SOSA NUÑEZ MAGDALENA MIREYA',
+    '120051',
+    'SONM730722',
+    'DOCENTE',
+    'MATUTINO',
+    4,
+    NULL
+  ),
+(
+    'MELENDEZ ELIZALDE JUAN FRANCISCO',
+    '2200352',
+    'MEEJ700302',
+    'DOCENTE',
+    'VESPERTINO',
+    4,
+    NULL
+  ),
+(
+    'VACA ESPINOSA JOEL',
+    '9701168',
+    'VAEJ640713',
+    'DOCENTE',
+    'VESPERTINO',
+    4,
+    NULL
+  ),
+(
+    'CALZADA DELGADO FABIAN',
+    '2800218',
+    'CADF600120',
+    'DOCENTE',
+    'VESPERTINO',
+    4,
+    NULL
+  ),
+(
+    'VELAZQUEZ ACEVES CESAR',
+    '2500662',
+    'VEAC771208',
+    'DOCENTE',
+    'VESPERTINO',
+    4,
+    NULL
+  ),
+(
+    'SANCHEZ NIETO MIGUEL ANGEL',
+    '130220',
+    'SANM780703',
+    'ADMINISTRATIVO',
+    'VESPERTINO',
+    4,
+    NULL
+  ),
+(
+    'HERRERA MEDINA ROBERTO',
+    '2100074',
+    'HEMR740214',
+    'ADMINISTRATIVO',
+    'VESPERTINO',
+    4,
+    NULL
+  ),
+(
+    'IÑIGO COBOS LAURA',
+    '150395',
+    'IICL840623',
+    'ADMINISTRATIVO',
+    'VESPERTINO',
+    4,
+    NULL
+  ),
+(
+    'NAVARRO SOTO SOCORRO LETICIA',
+    '2801062',
+    'NASS690618',
+    'DOCENTE',
+    'VESPERTINO',
+    4,
+    NULL
+  ),
+(
+    'RAMOS ANGELES HUGO',
+    '9701425',
+    'RAAH610910',
+    'DOCENTE',
+    'VESPERTINO',
+    4,
+    NULL
+  ),
+(
+    'GALVEZ REYES JOSE IVANOHE',
+    '2900530',
+    'GARI850610',
+    'DOCENTE',
+    'VESPERTINO',
+    4,
+    NULL
+  ),
+(
+    'ZUÑIGA CARDENAS CARLOS',
+    '38410',
+    'ZUCC580217',
+    'DOCENTE',
+    'VESPERTINO',
+    4,
+    NULL
+  ),
+(
+    'SANCHEZ RAMIREZ EDMUNDO JOEL LUCINO',
+    '130458',
+    'SARE720630',
+    'DOCENTE',
+    'VESPERTINO',
+    4,
+    NULL
+  ),
+(
+    'RESENDIZ HERNANDEZ CESAR',
+    '2700668',
+    'REHC770613',
+    'DOCENTE',
+    'VESPERTINO',
+    4,
+    NULL
+  ),
+(
+    'MONROY GARCIA JESUS',
+    '2800788',
+    'MOGJ620328',
+    'ADMINISTRATIVO',
+    'VESPERTINO',
+    4,
+    NULL
+  );

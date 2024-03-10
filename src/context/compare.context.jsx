@@ -15,9 +15,6 @@ export const CompareContextProvider = ({ children }) => {
       setCompareCedula(cedula);
       setResultCompare(result);
 
-      console.log("Result compare: ", result);
-      console.log("Cedula: ", cedula);
-
     };
 
     fetchCompare();

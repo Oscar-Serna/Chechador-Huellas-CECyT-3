@@ -7,6 +7,8 @@ import "./PersonalRegistrado.css";
 
 import { UsersContext } from "../../context/users.context";
 
+import GigLoading from "../../img/loadingGIF.gif";
+
 export const PersonalRegistrado = () => {
   const { allUsers, GetUsers } = useContext(UsersContext);
 
@@ -15,6 +17,18 @@ export const PersonalRegistrado = () => {
   }, []);
 
   function renderPersonal() {
+    if(allUsers[0] === null){
+      return (
+        <p>
+          <img src={GigLoading} alt="Gif de cargando el personal" style={{ width : "8rem" }} />
+          <br />
+          <span>
+            Espere mientras obtenemos el personal
+          </span>
+        </p>
+      )
+    }
+
     if (allUsers.length === 0)
       return (
         <p>
@@ -25,6 +39,7 @@ export const PersonalRegistrado = () => {
           </span>
         </p>
       );
+
     return allUsers.map((persona, index) => (
       <CardPersonalRegistrado
         key={index}
@@ -71,7 +86,7 @@ export const PersonalRegistrado = () => {
           <IoIosSearch />
           <input
             type="text"
-            placeholder="Buscar personal"
+            placeholder="Buscar personal (nombre, cedula, rfc, puesto)"
             onChange={(e) => {
               searchPersonal(e.target.value.toUpperCase());
             }}

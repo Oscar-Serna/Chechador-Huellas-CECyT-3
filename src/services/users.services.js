@@ -7,12 +7,14 @@ export const Services_Authentication = async (password) => {
 
     const { data } = await axios.get(`${BASE_URL}/auth`, { headers : { AuthorizationKey : "un1d4d1nf0rm4t1c4c3cyt3", password : password } });
 
+    console.log(data)
+
     return data;
 
   } catch (error) {
     console.log("Error en user.services.js - Services_Authentication");
     console.log(error);
-    // return false;
+    return false;
   }
 
 }
@@ -66,8 +68,6 @@ export const Services_UpdateUser = async (userData) => {
   try {
 
     const { data } = await axios.put(`${BASE_URL}/empleados/modificarEmpleado`, userData, { headers : { AuthorizationKey : "un1d4d1nf0rm4t1c4c3cyt3" } });
-
-    console.log("Result de Update desde services: ", data);
 
     return data;
 

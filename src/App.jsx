@@ -31,8 +31,6 @@ function App() {
           return (window.location.href = "https://cecyt3.ipn.mx/");
         }
 
-        console.log("Inicio de promise: ", password);
-
         res(password);
       }).then((password) => {
         async function fetchAuthentication() {
@@ -41,8 +39,9 @@ function App() {
               if (resultAuthentication === false) {
                 return window.location.href = "https://cecyt3.ipn.mx/";
               }
-
-              saveInLocalStorage();
+              if(resultAuthentication === true){
+                saveInLocalStorage();
+              }
             }
           );
         }
@@ -83,7 +82,7 @@ function App() {
       />
 
       <Route
-        path="/registro"
+        path="/alta"
         element={
           <>
             <Header />

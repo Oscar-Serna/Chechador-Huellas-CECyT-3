@@ -61,6 +61,28 @@
         .modalEditar .formulario input::placeholder{
           color: rgba(1, 80, 170, .5);
         }
+        .modalEditar .formulario .buttonsModificarHuellas{
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          gap: 1rem;
+        }
+
+        .modalEditar .formulario .buttonsModificarHuellas input{
+          width: 40%;
+          height: 2rem;
+          border: none;
+          cursor: pointer;
+          border-radius: 5px;
+          transition: 100ms ease;
+        }
+        .modalEditar .formulario .buttonsModificarHuellas input:hover{
+          background-color: rgba(1, 80, 170, .15);
+        }
+        .modalEditar .formulario .buttonsModificarHuellas input.selected{
+          background-color: rgb(1, 80, 170);
+          color: #fff;
+        }
 
         .modalEditar .formulario p{
           font-size: 13.5px;
@@ -80,6 +102,42 @@
           .modalEditar .formulario p span{
             font-weight: bold;
           }
+
+    .modalEditar .huellasModificar{
+      padding-top: 1.25rem;
+      color: #000;
+      text-align: center;
+    }
+    .modalEditar .huellasModificar.true{
+      display: block;
+    }
+    .modalEditar .huellasModificar.false{
+      display: none;
+    }
+      .modalEditar .huellasModificar > h4{
+        font-size: 18px;
+      }
+
+      .modalEditar .imagenesHuellasModificar{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 7rem;
+        padding-top: 1.25rem;
+        color: rgb(1, 80, 170);
+      }
+        .modalEditar .imagenesHuellasModificar svg{
+          width: 60px;
+          height: 60px;
+        }
+        .modalEditar .imagenesHuellasModificar p{
+          font-weight: bold;
+          color: #000;
+        }
+        .modalEditar .imagenesHuellasModificar img{
+          width: 60px;
+          height: 60px;
+        }
 
     .modalEditar .botones{
       width: 100%;
