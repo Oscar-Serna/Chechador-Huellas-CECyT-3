@@ -11,10 +11,11 @@ import "./ModalRegistro.css";
 import { UsersContext } from "../../context/users.context";
 import { Navigate, useSearchParams } from "react-router-dom";
 
-export const ModalRegistro = ({ modalState, animationRegistro }) => {
-  const numeroHuellas = 4;
+import { numHuellas } from "../../constants/Huellas.js";
 
-  const [huellas, setHuellas] = useState(new Array(numeroHuellas).fill(false));
+export const ModalRegistro = ({ modalState, animationRegistro }) => {
+
+  const [huellas, setHuellas] = useState(new Array(numHuellas).fill(false));
   const [reader, setReader] = useState(null);
 
   const [ valueBtnTerminar, setValueBtnTerminar ] = useState("Terminar");
@@ -73,6 +74,7 @@ export const ModalRegistro = ({ modalState, animationRegistro }) => {
   }
 
   function onAcquisitionStarted() {
+    // EN LA FUNCION SOLO COMPROBAMOS SI YA SE OBTUVIERON TODAS LAS HUELLAS
     if (scanningState === true) return;
 
     setScanningState("Capturando huellas...");
@@ -80,7 +82,7 @@ export const ModalRegistro = ({ modalState, animationRegistro }) => {
     const huellasLS = JSON.parse(localStorage.getItem("huellas"));
 
     if (huellasLS != null) {
-      const huellasComplete = new Array(numeroHuellas).fill(true);
+      const huellasComplete = new Array(numHuellas).fill(true);
 
       if (huellasLS != null && huellasLS.length >= huellas.length) {
         setHuellas(huellasComplete);
@@ -108,6 +110,7 @@ export const ModalRegistro = ({ modalState, animationRegistro }) => {
   }
 
   function onAcquisitionStopped() {
+    // SOLO SABEMOS CUANDO SE HA DEJADO DE TOMAR MUESTRAS
     setTimeout(() => {
       setScanningState("Registrar huellas dactilares");
       setReaderState(false);

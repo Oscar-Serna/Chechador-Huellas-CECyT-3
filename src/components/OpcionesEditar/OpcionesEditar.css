@@ -1,0 +1,32 @@
+.OpcionesEditar{
+  display: flex;
+  padding: .8rem  2rem;
+  gap: 1rem;
+  background-color: #E5EDF6;
+}
+
+  .OpcionesEditar .opcionEditar{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;    border-radius: 5px;
+    background-color: #0151AA;
+    color: #fff;
+    cursor: pointer;
+    text-transform: uppercase;
+    padding: .6rem 1rem .6rem 2.35rem;
+    transition: 150ms ease;
+  }
+  .OpcionesEditar .opcionEditar:hover{
+    opacity: .65;
+  }
+    .OpcionesEditar .opcionEditar svg{
+      position: absolute;
+      left: .65rem;
+      width: 1.2rem;
+      height: 1.2rem;
+      color: #fff;
+    }
+    .OpcionesEditar .opcionEditar h4{
+      font-size: 14px;
+    }

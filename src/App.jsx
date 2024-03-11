@@ -11,6 +11,7 @@ import { useEffect, useState } from "react";
 import { Services_Authentication } from "./services/users.services";
 
 import axios from "axios";
+import { Editar } from "./pages/Editar/Editar";
 
 function App() {
   let [renderCounter, setRenderCounter] = useState(0);
@@ -23,13 +24,13 @@ function App() {
 
     if (hasLogged() === true) {
       return setIpAddress(true);
-    };
+    }
 
     getIpAddress();
   }, []);
 
   async function getIpAddress() {
-    await axios.get("https://geolocation-db.com/json/").then(({data}) => {
+    await axios.get("https://geolocation-db.com/json/").then(({ data }) => {
       const ipToTest = data.IPv4;
       const resultIpAuthorized = testIp(ipToTest);
 
@@ -73,7 +74,7 @@ function App() {
   function testIp(ipToTest) {
     const ipsAuthorized = ["187.191.39.157", "148.204.233.1"];
 
-    if(ipsAuthorized.includes(ipToTest)) return true;
+    if (ipsAuthorized.includes(ipToTest)) return true;
 
     return false;
   }
@@ -93,40 +94,51 @@ function App() {
 
   return (
     <>
-      {ipAddress === true ? <Routes>
-        <Route
-          path="/"
-          element={
-            <>
-              <Header />
-              <Index />
-            </>
-          }
-        />
+      {ipAddress === true ? (
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <>
+                <Header />
+                <Index />
+              </>
+            }
+          />
 
-        <Route
-          path="/alta"
-          element={
-            <>
-              <Header />
-              <Registro />
-            </>
-          }
-        />
+          <Route
+            path="/alta"
+            element={
+              <>
+                <Header />
+                <Registro />
+              </>
+            }
+          />
+          
+          <Route
+            path="/editar"
+            element={
+              <>
+                <Header />
+                <Editar />
+              </>
+            }
+          />
 
-        <Route
-          path="/personal"
-          element={
-            <>
-              <Header />
-              <UsersContextProvider>
-                <PersonalComparado />
-              </UsersContextProvider>
-            </>
-          }
-        />
-      </Routes> : null }
-
+          <Route
+            path="/personal"
+            element={
+              <>
+                <Header />
+                <UsersContextProvider>
+                  <PersonalComparado />
+                </UsersContextProvider>
+              </>
+            }
+          />
+        </Routes>
+      ) : null}
     </>
   );
 }

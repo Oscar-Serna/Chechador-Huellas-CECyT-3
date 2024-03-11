@@ -124,13 +124,15 @@ export const UsersContextProvider = ({ children }) => {
     cedulaOriginal,
     rfc,
     puesto,
-    turno
+    turno,
+    seModificanHuellas,
+    huellasModificadas
   ) {
 
     const fetchUpdate = async () => {
 
       const result = await Services_UpdateUser(
-        { nombre, cedula, cedulaOriginal, rfc, puesto, turno }
+        { nombre, cedula, cedulaOriginal, rfc, puesto, turno, seModificanHuellas, huellasModificadas }
       ).then(result => {
         GetUsers(true);
         return result;

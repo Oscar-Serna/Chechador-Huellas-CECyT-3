@@ -118,8 +118,8 @@ export const LectorIndex = () => {
 
   useEffect(() => {
     if (resultCompare === true) {
-      // setNavigateTo(<Navigate to={`/personal/?cedula=${compareCedula}`} />);
-      window.location.href = `https://148.204.233.1/capital/ingreso.php?cedula=${compareCedula}`
+      setNavigateTo(<Navigate to={`/personal/?cedula=${compareCedula}`} />);
+      // window.location.href = `https://148.204.233.1/capital/ingreso.php?cedula=${compareCedula}`
       setResultCompare(null);
       setFetchState(false);
       setModalLoadingState("inactive");

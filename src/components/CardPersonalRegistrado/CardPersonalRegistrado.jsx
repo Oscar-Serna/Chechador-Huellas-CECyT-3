@@ -3,7 +3,6 @@ import React, { useContext } from "react";
 import "./CardPersonalRegistrado.css";
 
 import { UsersContext } from "../../context/users.context";
-import { EditarContext } from "../../context/editar.context";
 
 export const CardPersonalRegistrado = ({
   index,
@@ -16,10 +15,10 @@ export const CardPersonalRegistrado = ({
 }) => {
 
   const { DeleteUser } = useContext(UsersContext);
-  const {
-    setModalState,
-    setIndexEmpleadoSeleccionado
-  } = useContext(EditarContext);
+
+  function RedirectToEditar(indexEmpleado){
+    window.location.href = `/#/editar/?index=${indexEmpleado}`;
+  }
 
   return (
     <li className="cardPersonal" data-cedula={cedula} data-rfc={rfc} data-nombre={nombre} data-puesto={puesto}>
@@ -32,8 +31,7 @@ export const CardPersonalRegistrado = ({
       </div>
       <ul className="opciones">
         <li className="editar" onClick={() => {
-          setModalState("activo");
-          setIndexEmpleadoSeleccionado(index);
+          RedirectToEditar(index);
         }}>
           Editar personal
         </li>

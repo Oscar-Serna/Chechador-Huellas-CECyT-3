@@ -119,8 +119,7 @@
       text-transform: uppercase;
     }
     .modalLoading .contentModalLoading img{
-      width: 5rem;
-      height: 5rem;
+      width: 4rem;
       padding-top: 1.5rem;
     }
 

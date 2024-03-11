@@ -20,7 +20,7 @@ export const PersonalRegistrado = () => {
     if(allUsers[0] === null){
       return (
         <p>
-          <img src={GigLoading} alt="Gif de cargando el personal" style={{ width : "8rem" }} />
+          <img src={GigLoading} alt="Gif de cargando el personal" style={{ width : "6rem" }} />
           <br />
           <span>
             Espere mientras obtenemos el personal

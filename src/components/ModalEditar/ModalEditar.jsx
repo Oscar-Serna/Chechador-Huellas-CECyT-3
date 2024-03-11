@@ -1,28 +1,172 @@
 import React, { useContext, useEffect, useState } from "react";
 
 import "./ModalEditar.css";
-import { EditarContext } from "../../context/editar.context";
 import { UsersContext } from "../../context/users.context";
 
 import { IoMdFingerPrint } from "react-icons/io";
+
+import { useSearchParams } from "react-router-dom";
+
+import { numHuellas } from "../../constants/Huellas.js";
+import { FingerprintReader, SampleFormat } from "@digitalpersona/devices";
 
 export const ModalEditar = () => {
   const [valueButtonEditar, setValueButtonEditar] = useState("Confirmar");
   const [huellasSelection, setHuellasSelection] = useState(false);
 
-  const numHuellas = 4;
+  const [textButtonRegistrar, setTextButtonRegistrar] = useState(
+    "REGISTRAR HUELLAS DACTILARES"
+  );
 
-  const huellasArray = new Array(numHuellas).fill(null);
+  const { GetUsers, allUsers, UpdateUser } = useContext(UsersContext);
 
-  const { modalState, setModalState, indexEmpleadoSeleccionado } =
-    useContext(EditarContext);
+  const [searchParams, _] = useSearchParams();
 
-  const { allUsers, UpdateUser } = useContext(UsersContext);
+  const index = parseInt(searchParams.get("index"));
+
+  const indexEmpleadoSeleccionado = index;
+
+  // VARIABLES DEL LECTOR DE HUELLAS
+  const [reader, setReader] = useState(null);
+  const [deviceUID, setDeviceUID] = useState(null);
+
+  const [isReaderCapturing, setIsReaderCapturing] = useState(false);
+
+  let [scanIndex, setScanIndex] = useState(0);
+
+  const [arrayHuellas, setArrayHuellas] = useState(
+    new Array(numHuellas).fill(false)
+  );
+
+  // FUNCIONES DEL LECTOR DE HUELLAS
+  function StartCapturaHuellas() {
+    if (isReaderCapturing === true) return;
+    const samplesHuellas = JSON.parse(localStorage.getItem("editarHuellas"));
+
+    reader
+      .startAcquisition(SampleFormat.PngImage, `${deviceUID}`)
+      .then((result) => {
+        setIsReaderCapturing(true);
+        if (samplesHuellas === null)
+          return setTextButtonRegistrar("REGISTRANDO HUELLAS...");
+
+        if(samplesHuellas.length < numHuellas)
+          return setTextButtonRegistrar("REGISTRANDO HUELLAS...");
+
+        if (samplesHuellas.length === numHuellas){
+          setArrayHuellas(new Array(numHuellas).fill(true));
+          return setTextButtonRegistrar("HUELLAS YA OBTENIDAS... (REINICIE HUELLAS)");
+        }
+
+        if (samplesHuellas.length > numHuellas) DeleteLocalStorage();
+      })
+      .catch((error) => {
+        console.error("ERROR EN LA CAPTURA DE HUELLAS", error);
+      });
+
+  }
+  function StopCapturaHuellas() {
+    if (isReaderCapturing === false) return;
+
+    reader.stopAcquisition(deviceUID);
+    setIsReaderCapturing(false);
+    setTextButtonRegistrar("¡ADQUISICIÓN DE HUELLAS TERMINADA!");
+
+    setTimeout(() => {
+      setTextButtonRegistrar("REGISTRAR HUELLAS DACTILARES");
+    }, 2000);
+  }
+  function SaveSamplesInLocalStorage(sampleImage) {
+    const samplesHuellas = localStorage.getItem("editarHuellas");
+
+    if (samplesHuellas === null) {
+      const huellas = [];
+      const newHuellasArray = [...huellas, sampleImage];
+      localStorage.setItem("editarHuellas", JSON.stringify(newHuellasArray));
+    } else {
+      const huellas = JSON.parse(localStorage.getItem("editarHuellas"));
+      const newHuellasArray = [...huellas, sampleImage];
+      localStorage.setItem("editarHuellas", JSON.stringify(newHuellasArray));
+    }
+  }
+  function FixSampleImage(base64Image) {
+    let fixedImage = base64Image;
+    fixedImage = fixedImage.replace(/_/g, "/");
+    fixedImage = fixedImage.replace(/-/g, "+");
+
+    return fixedImage;
+  }
+  function DeleteLocalStorage() {
+    localStorage.removeItem("editarHuellas");
+  }
+  // EVENTS FUNCTIONS DEL LECTOR
+  function OnDeviceConnected() {
+    console.log("EL LECTOR ESTA CONECTADO");
+  }
+  function OnDeviceDisconnected() {
+    console.log("EL LECTOR ESTA DESCONECTADO");
+  }
+  function OnAcquisitonStarted() {
+    console.log("SE EMPIEZAN A OBTENER LAS MUESTRAS DE HUELLAS DACTILARES");
+  }
+  function OnAcquisitonStopped() {
+    console.log("SE DEJAN DE OBTENER LAS MUESTRAS DE HUELLAS DACTILARES");
+  }
+  function OnSamplesAcquired(event) {
+    console.log(arrayHuellas);
+
+    if (scanIndex > arrayHuellas.length - 1) return;
+
+    const sampleImage = event.samples[0];
+
+    SaveSamplesInLocalStorage(FixSampleImage(sampleImage));
+
+    const newArrayHuellas = [...arrayHuellas];
+
+    for (let i = 0; i <= scanIndex; i++) {
+      newArrayHuellas[i] = true;
+    }
+
+    setScanIndex(scanIndex++);
+    setArrayHuellas(newArrayHuellas);
+  }
+  // USE EFFECTS DEL LECTOR DE HUELLAS
+  useEffect(() => {
+    setReader(new FingerprintReader());
+  }, []);
+  useEffect(() => {
+    if (reader === null) return;
+
+    reader.on("DeviceConnected", OnDeviceConnected);
+    reader.on("DeviceDisconnected", OnDeviceDisconnected);
+    reader.on("AcquisitionStarted", OnAcquisitonStarted);
+    reader.on("AcquisitionStopped", OnAcquisitonStopped);
+    reader.on("SamplesAcquired", OnSamplesAcquired);
+
+    Promise.all([reader.enumerateDevices()]).then((result) => {
+      setDeviceUID(result[0][0]);
+    });
+  }, [reader]);
+  // FUNCIONES COMUNES DEL DOCUMENTO
+
+  function GoToInicio() {
+    window.location.href = "/";
+    DeleteLocalStorage();
+  }
+
+  function GoToAlta() {
+    window.location.href = "/#/alta";
+    DeleteLocalStorage();
+  }
 
   function renderFormulario() {
+    if (allUsers[0] === null) return;
+
     if (allUsers.length === 0) return;
 
     const infoEmpleado = allUsers[indexEmpleadoSeleccionado];
+
+    if (infoEmpleado === undefined) return GoToInicio();
 
     return (
       <div className="formulario">
@@ -116,9 +260,21 @@ export const ModalEditar = () => {
     input.value = value;
   }
 
-  function handleUpdate() {
-    setValueButtonEditar("Modificando, espere...");
+  function HuellasSelection(index, selection) {
+    const buttonsSelection = document.querySelectorAll(
+      ".buttonsModificarHuellas > input"
+    );
 
+    buttonsSelection.forEach((button) => {
+      button.classList.remove("selected");
+    });
+
+    buttonsSelection[index].classList.add("selected");
+
+    setHuellasSelection(selection);
+  }
+
+  function handleUpdate() {
     const inputsFormulario = document.querySelectorAll(
       ".formulario > div > input"
     );
@@ -134,8 +290,6 @@ export const ModalEditar = () => {
 
     const cedulaOriginal = allUsers[indexEmpleadoSeleccionado].cedula;
 
-    console.log({ nombre, cedula, rfc, puesto, turno });
-
     if (
       nombre.trim() === "" ||
       cedula.trim() === "" ||
@@ -147,48 +301,65 @@ export const ModalEditar = () => {
       return alert("DEBES DE RELLENAR TODOS LOS CAMPOS");
     }
 
+    if (huellasSelection === true) {
+      const samplesHuellas = JSON.parse(localStorage.getItem("editarHuellas"));
+
+      if (samplesHuellas === null)
+        return alert("DEBES DE REGISTRAR TODAS LAS HUELLAS");
+
+      console.log(samplesHuellas.length, numHuellas);
+
+      if (samplesHuellas.length < numHuellas)
+        return alert("DEBES REGISTRAR TODAS LAS HUELLAS");
+    }
+
     if (cedulaOriginal === null) return alert("CEDULA ORIGINAL NO ASIGNADA");
 
+    console.log({ cedulaOriginal, cedula });
+
+    setValueButtonEditar("Modificando, espere...");
+
+    const huellasModificadas = JSON.parse(
+      localStorage.getItem("editarHuellas")
+    );
+
+    const seModificanHuellas = huellasSelection;
+
     async function ObtenerResultadoUpdate() {
-      await UpdateUser(nombre, cedula, cedulaOriginal, rfc, puesto, turno).then(
-        (result) => {
-          if (result === "MODIFICADO") {
-            limpiarFormulario();
-            setModalState("inactivo");
-            setValueButtonEditar("CONFIRMAR");
-          }
+      await UpdateUser(
+        nombre,
+        cedula,
+        cedulaOriginal,
+        rfc,
+        puesto,
+        turno,
+        seModificanHuellas,
+        huellasModificadas
+      ).then((result) => {
+        if (result === "MODIFICADO") {
+          GoToAlta();
         }
-      );
+        console.log(result);
+      });
     }
 
     ObtenerResultadoUpdate();
   }
 
-  function HuellasSelection(index, selection) {
-    const buttonsSelection = document.querySelectorAll(
-      ".buttonsModificarHuellas > input"
-    );
-
-    buttonsSelection.forEach((button) => {
-      button.classList.remove("selected");
-    });
-
-    buttonsSelection[index].classList.add("selected");
-
-    setHuellasSelection(selection);
+  function handleReiniciarHuellas() {
+    window.location.reload();
   }
 
   useEffect(() => {
-    if (huellasSelection != true) return;
-  }, [huellasSelection]);
+    GetUsers(true, null);
+  }, []);
 
   return (
     <section
-      className={`modalEditar ${modalState}`}
+      className={`modalEditar activo`}
       onClick={(e) => {
         if (e.target.classList.contains("modalEditar")) {
           limpiarFormulario();
-          setModalState("inactivo");
           setHuellasSelection(false);
         }
       }}
@@ -201,34 +372,71 @@ export const ModalEditar = () => {
         {indexEmpleadoSeleccionado === null ? null : renderFormulario()}
 
         <div className={`huellasModificar ${huellasSelection}`}>
-          <h4>AGREGAR HUELLAS</h4>
+          <div className="buttonsScanSamples">
+            <input
+              type="button"
+              value={textButtonRegistrar}
+              style={{
+                backgroundColor: "rgb(1, 80, 170)",
+              }}
+              onClick={() => {
+                StartCapturaHuellas();
+              }}
+            />
+            <input
+              type="button"
+              value="TERMINAR ESCANEO"
+              style={{
+                backgroundColor: "darkred",
+              }}
+              onClick={() => {
+                StopCapturaHuellas();
+              }}
+            />
+          </div>
+
+          <h4>MODIFICAR HUELLAS DACTILARES</h4>
 
           <div className="imagenesHuellasModificar">
-            {huellasArray.map((huella, index) =>
-                huella === null ? (
+            {arrayHuellas.map((huella, index) =>
+              huella === false ||
+              JSON.parse(localStorage.getItem("editarHuellas")) === null ? (
                 <div key={index}>
                   <IoMdFingerPrint />
                   <p>Huella {index + 1}</p>
                 </div>
               ) : (
-                <div>
-                  <img key={index} src={JSON.parse(localStorage.getItem("huellasModificar"))[index]} alt="" />
+                <div key={index}>
+                  <img
+                    key={index}
+                    src={`data:image/jpeg;base64,${
+                      JSON.parse(localStorage.getItem("editarHuellas"))[index]
+                    }`}
+                    alt="Imagen de huella dactilar"
+                  />
                   <p>Huella {index + 1}</p>
                 </div>
               )
             )}
           </div>
         </div>
-
         <div className="botones">
+          <input
+            type="button"
+            className="Reiniciar"
+            value="Reiniciar huellas"
+            onClick={() => {
+              handleReiniciarHuellas();
+              DeleteLocalStorage();
+            }}
+          />
           <input
             type="button"
             className="cancelar"
             value="Cancelar"
             onClick={() => {
               limpiarFormulario();
-              setModalState("inactivo");
-              setHuellasSelection(false);
+              GoToAlta();
             }}
           />
           <input
